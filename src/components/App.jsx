@@ -1,8 +1,16 @@
-import { useState } from "react";
-import reactLogo from "../assets/react.svg";
-import viteLogo from "/vite.svg";
-import Product from "./Product";
+// import { useState } from "react";
+// import reactLogo from "../assets/react.svg";
+// import viteLogo from "/vite.svg";
+
 import "./App.css";
+
+import Profile from "./Profile/Profile";
+import FriendList from "./FriendList/FriendList";
+import TransactionHistory from "./TransactionHistory/TransactionHistory";
+
+import userData from "../userData.json";
+import friends from "../friends.json";
+import transactions from "../transactions.json";
 
 // function App() {
 //   const [count, setCount] = useState(0);
@@ -45,8 +53,8 @@ import "./App.css";
 // function Product() {
 //   return (
 //     <div>
-//             <h2>Cookies</h2>
-//       <p>Price: 999 credits</p>   {" "}
+//      <h2>Cookies</h2>
+//       <p>Price: 999 credits</p>
 //     </div>
 //   );
 // }
@@ -108,25 +116,97 @@ import "./App.css";
 
 // ex2
 
-export default function App() {
-  return (
-    <div>
-      <h1>Best </h1>
-      <Product name="Tacos De Chef" price={20} />
-      <Product
-        name="Tacos With Chicken"
-        imgUrl="https://images.pexels.com/photos/461198/pexels-photo-461198.jpeg?dpr=2&h=480&w=640"
-        price={21}
-      />
-      <Product
-        name="Tacos With Mushrooms"
-        imgUrl="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTf_p1wJErdpiCNk5NeVNfq7oyl5iGULb3ukw&s"
-        price={26}
-      />
-    </div>
-  );
-}
+// export default function App() {
+//   return (
+//     <div>
+//       <h1>Best </h1>
+//       <Product name="Tacos De Chef" price={20} />
+//       <Product
+//         name="Tacos With Chicken"
+//         imgUrl="https://images.pexels.com/photos/461198/pexels-photo-461198.jpeg?dpr=2&h=480&w=640"
+//         price={21}
+//       />
+//       <Product
+//         name="Tacos With Mushrooms"
+//         imgUrl="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTf_p1wJErdpiCNk5NeVNfq7oyl5iGULb3ukw&s"
+//         price={26}
+//       />
+//     </div>
+//   );
+// }
 // ВИСНОВОК - Ми створили компонент, який налаштовується і який можна використовувати для відображення товарів. Ми передаємо йому дані як пропси, а відповідь - отримуємо дерево React-елементів із підставленими значеннями.
 // Пропси використовуються для передачі даних від батька до дитини.
 // Пропси передаються лише вниз по дереву від батьківського компонента.
 // Пропси доступні лише для читання, їх не можна змінити
+
+// Колекції;
+// Колекції;
+// Колекції;
+// Колекції;
+// Колекції;
+// Колекції;
+// Колекції;
+// Колекції;
+
+// Для того щоб відрендерити колекцію елементів, використовується
+// масив даних і метод map().
+// Callback-функція map() для кожного елемента колекції повертає розмітку.
+
+// [1, 2, 3].map((item) => {
+//   return <p>{item}</p>;
+// });
+
+// Отже, ми отримуємо масив React-елементів, який можна рендерити. Для цього в JSX ми обгортаємо цей вираз у фігурні дужки {}.
+
+// <div>
+// 	{[1, 2, 3].map(item => {
+// 		return <div>{item}</div>;
+// 	})}
+// </div>
+
+// Тепер використаємо масив книг для того, щоб відобразити їх як список.
+// export default function App() {
+//   return (
+//     <div>
+//       <h1>Books</h1>
+//       <BookList books={favBooks} />
+//     </div>
+//   );
+// }
+
+// styles lesson
+
+// export default function App() {
+//   return (
+//     <>
+//       <Alert variant="info">
+//         Would you like to browse our recommended products?
+//       </Alert>
+//       <Alert variant="error">
+//         There was an error during your last transaction
+//       </Alert>
+//       <Alert variant="success">
+//         Payment received, thank you for your purchase
+//       </Alert>
+//       <Alert variant="warning">
+//         Please update your profile contact information
+//       </Alert>
+//     </>
+//   );
+// }
+
+export default function App() {
+  return (
+    <div className="page">
+      <Profile
+        name={userData.username}
+        tag={userData.tag}
+        location={userData.location}
+        image={userData.avatar}
+        stats={userData.stats}
+      />
+      |<FriendList friends={friends} />
+      <TransactionHistory items={transactions} />
+    </div>
+  );
+}
