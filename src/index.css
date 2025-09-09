@@ -69,8 +69,7 @@ p {
 ul,
 ol {
   margin: 0;
-  padding: 0;
-  list-style-type: none; /* Removes the bullets */
+  /* padding: 0; */
 }
 
 img {

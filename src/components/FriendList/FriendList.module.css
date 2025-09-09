@@ -1,0 +1,36 @@
+.friendsFlex {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin: 20px 0;
+  padding: 0;
+}
+.friendsItem {
+  width: calc(100% / 5 - 50px);
+  list-style: none;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  margin-right: 10px;
+}
+.friendsItem:last-child {
+  margin-right: 0;
+}
+@media (max-width: 650px) {
+  .friendsFlex {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    margin: 20px 0;
+    padding: 0;
+  }
+  .friendsItem {
+    width: calc(100% / 5 - 20px);
+    list-style: none;
+    display: block;
+    text-align: center;
+    margin-right: 5px;
+  }
+}

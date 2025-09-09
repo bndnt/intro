@@ -1,0 +1,6 @@
+.friendStatus.isOnline {
+  color: green;
+}
+.friendStatus.isOffline {
+  color: red;
+}

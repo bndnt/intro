@@ -37,3 +37,12 @@
 .profileList li:last-child {
   border-right: none;
 }
+@media (max-width: 650px) {
+  .profileCard {
+    border-radius: 10px;
+    border: 1px solid black;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+}
