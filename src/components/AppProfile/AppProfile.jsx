@@ -286,21 +286,6 @@ export default defineConfig({
           );
         })}
       </div>
-
-      {/* <Profile
-        name="Sasha"
-        phone="+380594783340"
-        email="saskakakaka@gamil.com"
-        status="online"
-        hasPhisicalAdress={true}
-      />
-      <Profile
-        name="Masha"
-        phone="+380594783340"
-        email="maskakakaka@gamil.com"
-        status="offline"
-        hasPhisicalAdress={false}
-      /> */}
     </div>
   );
 }

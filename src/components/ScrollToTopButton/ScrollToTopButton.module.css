@@ -1,0 +1,21 @@
+.ScrollToTopBtn {
+  width: 60px;
+  height: 60px;
+  position: fixed;
+  bottom: 2.5rem;
+  right: 2.5rem;
+  padding: 10px;
+  font-size: 1.5rem;
+  border-radius: 50%;
+  border: none;
+  background-color: #61dafb;
+  color: #fff;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  font-size: 30px;
+  transition: all 0.3s ease-in-out;
+}
+.ScrollToTopBtn:hover {
+  background-color: #52c7ea; /* чуть светлее при hover */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
