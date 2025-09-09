@@ -1,27 +1,26 @@
-export default function Profile({ name, tag, location, image, stats }) {
+import css from "./Profile.module.css";
+export default function Profile({
+  name,
+  phone,
+  email,
+  status = "offline",
+  hasPhisicalAdress,
+  imgUrl,
+}) {
   return (
-    <div>
-      <div>
-        <img src={image} alt={name} />
-        <p>{name}</p>
-        <p>@{tag}</p>
-        <p>{location}</p>
-      </div>
-
-      <ul>
-        <li>
-          <span>{stats.followers}</span>
-          <span>1000</span>
-        </li>
-        <li>
-          <span>{stats.views}</span>
-          <span>2000</span>
-        </li>
-        <li>
-          <span>{stats.likes}</span>
-          <span>3000</span>
-        </li>
-      </ul>
+    <div className={css.userCard}>
+      <h3>
+        <img className={css.profileImg} src={imgUrl} alt={name} />
+        {/* Name:{name} {hasPhisicalAdress && "🏠"} */}
+        Name: {name}
+        {hasPhisicalAdress ? "🏠" : ""}
+      </h3>
+      <p>Phone: {phone}</p>
+      <p>Email: {email}</p>
+      <p>
+        Status: {status}
+        {status === "online" ? "🟢" : "🔴"}
+      </p>
     </div>
   );
 }

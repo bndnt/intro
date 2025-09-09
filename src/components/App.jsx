@@ -4,13 +4,13 @@
 
 import "./App.css";
 
-import Profile from "./Profile/Profile";
-import FriendList from "./FriendList/FriendList";
-import TransactionHistory from "./TransactionHistory/TransactionHistory";
+import AppProfile from "./AppProfile/AppProfile";
+// import FriendList from "./FriendList/FriendList";
+// import TransactionHistory from "./TransactionHistory/TransactionHistory";
 
-import userData from "../userData.json";
-import friends from "../friends.json";
-import transactions from "../transactions.json";
+// import userData from "../userData.json";
+// import friends from "../friends.json";
+// import transactions from "../transactions.json";
 
 // function App() {
 //   const [count, setCount] = useState(0);
@@ -148,14 +148,6 @@ import transactions from "../transactions.json";
 // Колекції;
 // Колекції;
 
-// Для того щоб відрендерити колекцію елементів, використовується
-// масив даних і метод map().
-// Callback-функція map() для кожного елемента колекції повертає розмітку.
-
-// [1, 2, 3].map((item) => {
-//   return <p>{item}</p>;
-// });
-
 // Отже, ми отримуємо масив React-елементів, який можна рендерити. Для цього в JSX ми обгортаємо цей вираз у фігурні дужки {}.
 
 // <div>
@@ -198,15 +190,8 @@ import transactions from "../transactions.json";
 export default function App() {
   return (
     <div className="page">
-      <Profile
-        name={userData.username}
-        tag={userData.tag}
-        location={userData.location}
-        image={userData.avatar}
-        stats={userData.stats}
-      />
-      |<FriendList friends={friends} />
-      <TransactionHistory items={transactions} />
+      <h1>Посібник-шпора полекціям з React</h1>
+      <AppProfile />
     </div>
   );
 }
