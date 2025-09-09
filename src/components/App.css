@@ -56,3 +56,11 @@ p code {
 .read-the-docs {
   color: #888;
 }
+@media (max-width: 650px) {
+  h1 {
+    font-size: 2.2em;
+  }
+  code {
+    font-size: 0.8em;
+  }
+}

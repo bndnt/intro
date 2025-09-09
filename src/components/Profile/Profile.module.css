@@ -6,4 +6,25 @@
 }
 .userCard {
   width: 220px;
+  padding: 10px;
+  margin: 0 10px;
+}
+@media (max-width: 768px) {
+  .profileImg {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+  }
+  .userCard {
+    width: calc(100% / 3 - 20px);
+  }
+  .userCard p {
+    margin: 0;
+    font-size: 0.7em;
+  }
+}
+@media (max-width: 500px) {
+  .userCard {
+    width: calc(100% / 2 - 20px);
+  }
 }

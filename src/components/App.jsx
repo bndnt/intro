@@ -190,7 +190,7 @@ import AppProfile from "./AppProfile/AppProfile";
 export default function App() {
   return (
     <div className="page">
-      <h1>Посібник-шпора полекціям з React</h1>
+      <h1>Посібник-шпора по лекціям GoIt з React </h1>
       <AppProfile />
     </div>
   );
