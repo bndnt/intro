@@ -1,5 +1,6 @@
 import { useState } from "react";
 import Bar from "../Bar/Bar";
+import SecondModuleModal from "../SecondModuleModal/SecondModuleModal";
 
 export default function SecondModule() {
   const [counter, setCounter] = useState(0);
@@ -9,6 +10,7 @@ export default function SecondModule() {
     white: 4,
     rose: 5,
   });
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const handleCounter = () => {
     setCounter(counter + 1);
@@ -28,6 +30,12 @@ export default function SecondModule() {
   };
   const total = bar.red + bar.white + bar.rose;
 
+  const openModal = () => {
+    setIsModalOpen(true);
+  };
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
   return (
     <div>
       <h1>Модуль 2</h1>
@@ -182,6 +190,28 @@ const App = () => {
       <h2>2.2 - Життєвий цикл компонента</h2>
       <h3>Хук useEffect</h3>
       <p>
+        Кожен живий організм народжується, постійно оновлюється і, нарешті, при
+        завершенні життя вмирає. Це життєвий цикл організму. Подібно до цього у
+        компонентів також є життєвий цикл, який складається з кількох етапів -
+        монтування, оновлення та розмонтування.
+      </p>
+      <p>Візьмемо, наприклад, компонент модального вікна.</p>
+      <ul>
+        <li>
+          Етап <b>монтування</b> - це той момент, коли компонент вперше
+          з'являється на екрані. Іншими словами, модальне вікно відкривається, і
+          його HTML поміщається в DOM.
+        </li>
+        <li>
+          <b>Оновлення</b> може бути викликано зміною стану state самого
+          компонента або props, які йому передаються.
+        </li>
+        <li>
+          Коли модальне вікно закривається, відбувається етап{" "}
+          <b>розмонтування</b>, і його HTML видаляється з DOM.
+        </li>
+      </ul>
+      <p>
         Напишемо компонент, який буде зберігати кількість кліків по кнопці у
         своєму стані.
       </p>
@@ -242,6 +272,180 @@ const App = () => {
           значення всередині компонента.
         </li>
       </ul>
+      <h3>Етап монтування</h3>
+      <p>Функція, яка виконується кожен раз, після рендеру компонента</p>
+      <pre>
+        <code>{` useEffect(() => {
+            console.log("Modal is mounted!");
+          }, []);
+`}</code>
+      </pre>
+      <p>
+        <b>Для чого використовується?</b>
+      </p>
+      <ol>
+        <li>Надсилаються мережеві запити за даними після монтування.</li>
+        <li>
+          Для встановлення глобальних слухачів подій{" "}
+          <code>window.addEventListener</code>
+        </li>
+        <li>
+          Встановлюються таймери та інтервали
+          <code>{`setInterval, setTimeout`}</code>
+        </li>
+        <li>
+          Виконуються якісь додаткові функції ефекти напр. відключення скролу у
+          користувача при відкритті модального вікна.
+        </li>
+      </ol>
+      <p>
+        Якщо другим аргументом хука useEffect передати порожній масив, то такий
+        ефект виконається лише один раз - на етапі монтування компонента, і
+        більше ніколи.
+      </p>
+      <h3>Етап розмонтування</h3>
+      <p>
+        Функція, що виконується перед тим, як компонент буде повністю видалений
+        з розмітки.
+      </p>
+      <pre>
+        <code>{`useEffect(() => {
+            console.log("Modal is mounted!");
+            return () => {
+              console.log("Modal is unmounted");
+            };
+          }, []);`}</code>
+      </pre>
+      <p>
+        Тобто ми виконуємо колл-бек функцію у return перед тим, як модальне
+        вікно буде повністю видалено з розмітки.
+      </p>
+      <p>
+        <b>Для чого використовується?</b>
+      </p>
+      <ol>
+        <li>
+          Відхиляти мережеві запити за даними після монтування post, get...
+        </li>
+        <li>
+          Для видалення глобальних слухачів подій{" "}
+          <code>window.removeEventListener</code>.У випадку невиконання даного
+          етапу це призведе до витоку пам`яті та додаток закрашиться.
+        </li>
+        <li>
+          Прибираються таймери та інтервали
+          <code>{`clearInterval, clearTimeout`}</code>
+        </li>
+        <li>
+          Виконуються якісь додаткові функції ефекти напр. увімкнути скролу у
+          користувача при видаленні модального вікна з розмітки.
+        </li>
+      </ol>
+      <h3>Етап оновлення</h3>
+      <pre>
+        <code>{``}</code>
+      </pre>
+      <p>
+        <b>Для чого використовується?</b>
+      </p>
+      <ol>
+        <li></li>
+        <li></li>
+        <li></li>
+      </ol>
+      <h3>Розглянемо ЖЦ на прикладі модального вікна</h3>
+      <p>Створимо компонент Modal та додамо базову розмітку</p>
+      <pre>
+        <code>{`<div className={css.backdrop}>
+            <div className={css.modal}>
+              <button
+                type="button"
+                aria-label="close-modal-button"
+                className={css.modalBtn}
+              >
+                ╳
+              </button>
+              <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. A debitis
+                cupiditate culpa iure eaque minima. Error molestias sunt minus, quos
+                voluptatem dolorem quo, modi eius voluptas, corrupti facilis sed
+                recusandae.
+              </p>
+            </div>
+          </div>`}</code>
+      </pre>
+      <ul>
+        <li>
+          <b>
+            <code>{`<div className={css.backdrop}>`}</code>
+          </b>
+          буде слугувати фоном, що буде з`являтися з модальним вікном`
+        </li>
+        <li>
+          <b>
+            <code>{`aria-label="close-modal-button"`}</code>
+          </b>
+          Так як кнопка не містить тексту, бажано додавати до неї{" "}
+          <code>aria-label</code>, щоб у непередбачуваних ситуація користувач
+          знав, для чого цей елемент
+        </li>
+      </ul>
+      <p>
+        Для роботи з свг встановимо плгін <code>vite-plugin-svgr</code> та
+        підключимо його у <code>vite.config.js</code>
+      </p>
+      <pre>
+        <code>{`import svgr from "vite-plugin-svgr";
+
+export default {
+  plugins: [svgr()],
+};`}</code>
+      </pre>
+      <p>По-перше створимо стан, для модального вікна</p>
+      <p>
+        наступник кроком створимо функцію відкриття та закриття модального
+        відкна
+      </p>
+      <pre>
+        <code>{`  const openModal = () => {
+    setIsModalOpen(true);
+  };`}</code>
+      </pre>
+      <pre>
+        <code>{`const closeModal = () => {
+    setIsModalOpen(false);
+  };`}</code>
+      </pre>
+      <p>По пропсам передамо функцыю закриття на кнопку в компонент Modal</p>
+      <h3>На прикладі створення Modal розглянемо життєві цикли у React</h3>
+      <p>
+        <b>1 - Монтування</b>
+      </p>
+      <pre>
+        <code>{`const SecondModuleModal = ({ closeModal }) => {
+        useEffect(() => {
+          console.log("Modal is mounted!");
+        }, []);`}</code>
+      </pre>
+      <p>Console:</p>
+      <code>{` Modal is mounted!`}</code>
+      <p>
+        <b>1 - Розмонтування</b>
+      </p>
+      <pre>
+        <code>{`useEffect(() => {
+            console.log("Modal is mounted!");
+            return () => {
+              console.log("Modal is unmounted");
+            };
+          }, []);`}</code>
+      </pre>
+      <p>Console:</p>
+      <code>{`Modal is unmounted`}</code>
+      <button type="button" onClick={openModal}>
+        Open modal
+      </button>
+      {isModalOpen && <SecondModuleModal closeModal={closeModal} />}
     </div>
   );
 }
