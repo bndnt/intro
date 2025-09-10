@@ -34,6 +34,10 @@ p code {
   display: inline;
   padding: 0 5px;
 }
+li code {
+  display: inline;
+  padding: 0 5px;
+}
 @keyframes logo-spin {
   from {
     transform: rotate(0deg);
