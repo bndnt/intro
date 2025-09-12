@@ -442,6 +442,27 @@ export default {
       </pre>
       <p>Console:</p>
       <code>{`Modal is unmounted`}</code>
+      <p>Створимо лічильник всередині модального вікна</p>
+      <pre>
+        <code>{`
+          const [counter, setCounter] = useState(0);
+
+       <p>Counter state: {counter}</p>
+        {/* <button type="button" onClick={() => setCounter(counter + 1)}> */}
+        <button
+          type="button"
+          onClick={() => setCounter((prevState) => prevState + 1)}
+        >
+          Change counters state
+        </button>
+      `}</code>
+      </pre>
+      <p>За допомогою useEffect підпишимося на актуальне значення лічилька</p>
+      <pre>
+        <code>{`  useEffect(() => {
+            console.log(counter);
+          }, [counter]);`}</code>
+      </pre>
       <button type="button" onClick={openModal}>
         Open modal
       </button>
