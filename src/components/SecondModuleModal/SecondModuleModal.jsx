@@ -14,6 +14,9 @@ const SecondModuleModal = ({ closeModal }) => {
       window.removeEventListener("keydown", handleKeyDown);
     };
   }, []);
+  useEffect(() => {
+    console.log(counter);
+  }, [counter]);
   return (
     <div className={css.backdrop}>
       <div className={css.modal}>
@@ -38,6 +41,14 @@ const SecondModuleModal = ({ closeModal }) => {
           voluptatem dolorem quo, modi eius voluptas, corrupti facilis sed
           recusandae.
         </p>
+        <p>Counter state: {counter}</p>
+        {/* <button type="button" onClick={() => setCounter(counter + 1)}> */}
+        <button
+          type="button"
+          onClick={() => setCounter((prevState) => prevState + 1)}
+        >
+          Change counter`s state
+        </button>
       </div>
     </div>
   );
