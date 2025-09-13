@@ -2,6 +2,8 @@ import { useState } from "react";
 import Bar from "../Bar/Bar";
 import SecondModuleModal from "../SecondModuleModal/SecondModuleModal";
 import screen1 from "../../assets/img/screen1.jpg";
+import screen2 from "../../assets/img/screen2.png";
+import css from "./SecondModule.module.css";
 export default function SecondModule() {
   const [counter, setCounter] = useState(0);
   const [isLoremOpen, setIsLoremOpen] = useState(false);
@@ -529,9 +531,56 @@ export default {
           <code>{`<div className={css.backdrop} onClick={handleBackdropClose}></div>`}</code>
         </li>
       </ul>
-      <button type="button" onClick={openModal}>
-        Open modal
+      <button type="button" onClick={openModal} className={css.openModalBtn}>
+        OPEN MODAL BUTTON
       </button>
+      <p>
+        <b>Робота з LocalStorage</b>
+      </p>
+      <p>
+        У виществореному лічильнику модального вікна зробимо можливість
+        зберігати дані лічильника у LocalStorage
+      </p>
+      <ol>
+        <li>
+          Необхідно слідкувати за актуальним значенням лічильника і кожен раз
+          при його зміні оновлювати значення у LocalStorage. Тобто
+          синхронізувати стейт з локальним сховищем. Для цього у локальному
+          сховищі створимо змінну та підпишимося на стейт лічильника
+        </li>
+        <pre>
+          <code>{`  useEffect(() => {
+              localStorage.setItem("modal-counter", counter);
+            }, [counter]);`}</code>
+        </pre>
+        <p>
+          При першому ж монтуванні модального вікна з лічильником ми бачимо
+          наступній варіант
+        </p>
+        <img src={screen2} alt="" style={{ width: "400px" }} />
+        <li>
+          Наступним етапом необхідно реалізувати витягання з локального сховища
+          значення лічильника, адже при демонтуванні модального вікна занчення
+          лічильника прийде до поаткового значення стану - нулю. Саме тому
+          необхідно змінити стартове значення стану лічильника.
+        </li>
+        <pre>
+          <code>{`const [counter, setCounter] = useState(() => {
+    return parseInt(localStorage.getItem("modal-counter"));
+  });`}</code>
+        </pre>
+        <li>
+          Останнім підводним каменем у вирішенні цієї задачі є кейс, коли
+          користувач вперше відкрив модальне вікно. У цьому випадку початкове
+          значення за ключем у локальному сховищі буде null. Тому за допомогою
+          оператора ?? необхідно перевірити чи не рівний ключ null, якщо так,
+          змінити значення стану на 0.
+        </li>
+        <pre>
+          <code>{`    return parseInt(localStorage.getItem("modal-counter") ?? 0);
+`}</code>
+        </pre>
+      </ol>
       {isModalOpen && <SecondModuleModal closeModal={closeModal} />}
     </div>
   );

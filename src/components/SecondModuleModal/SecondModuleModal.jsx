@@ -1,7 +1,9 @@
 import { useEffect, useState } from "react";
 import css from "./SecondModuleModal.module.css";
 const SecondModuleModal = ({ closeModal }) => {
-  const [counter, setCounter] = useState(0);
+  const [counter, setCounter] = useState(() => {
+    return parseInt(localStorage.getItem("modal-counter") ?? 0);
+  });
   // useEffect(() = {
   //     console.log(`${counter}`);
 
@@ -22,7 +24,7 @@ const SecondModuleModal = ({ closeModal }) => {
     };
   }, [closeModal]);
   useEffect(() => {
-    // console.log(counter);
+    localStorage.setItem("modal-counter", counter);
   }, [counter]);
 
   const handleBackdropClose = (e) => {
