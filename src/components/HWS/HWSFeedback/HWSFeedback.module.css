@@ -1,0 +1,10 @@
+.hwsFeedbackList {
+  list-style: none;
+  padding: 0px 0 30px;
+}
+.hwsFeedbackList li {
+  margin-bottom: 10px;
+}
+.hwsFeedbackList li:last-child {
+  margin-bottom: 0;
+}

@@ -1,0 +1,10 @@
+.hwsOptionFlex {
+  display: flex;
+  margin: 20px 0;
+}
+.hwsOptionFlex button {
+  margin-right: 15px;
+}
+.hwsOptionFlex button:last-child {
+  margin-right: 0;
+}

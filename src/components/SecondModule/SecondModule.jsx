@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Bar from "../Bar/Bar";
 import SecondModuleModal from "../SecondModuleModal/SecondModuleModal";
+import SipHappensCafe from "../SipHappensCafe/SipHappensCafe";
 import screen1 from "../../assets/img/screen1.jpg";
 import screen2 from "../../assets/img/screen2.png";
 import css from "./SecondModule.module.css";
@@ -554,6 +555,17 @@ export default {
             }, [counter]);`}</code>
         </pre>
         <p>
+          <b>
+            Якщо ви працюєте із складними типами даних, такими як об'єкт чи
+            масив, не забувайте перетворити збережене значення у рядок за
+            допомогою JSON.stringify.
+          </b>
+        </p>
+        <pre>
+          <code>{`window.localStorage.setItem("key", JSON.stringify());
+`}</code>
+        </pre>
+        <p>
           При першому ж монтуванні модального вікна з лічильником ми бачимо
           наступній варіант
         </p>
@@ -582,6 +594,10 @@ export default {
         </pre>
       </ol>
       {isModalOpen && <SecondModuleModal closeModal={closeModal} />}
+      <h2>
+        Домашне завдання 2.1 - Віджет відгуків про кав'ярню Sip Happens Café.
+      </h2>
+      <SipHappensCafe />
     </div>
   );
 }
