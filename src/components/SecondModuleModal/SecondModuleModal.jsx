@@ -7,18 +7,31 @@ const SecondModuleModal = ({ closeModal }) => {
 
   // }, [counter])
   useEffect(() => {
-    console.log("Modal is mounted!");
-    const handleKeyDown = () => {};
+    // console.log("Modal is mounted!");
+    const handleKeyDown = (e) => {
+      // console.log("keydown");
+      // console.log(e);
+      if (e.code === "Escape") {
+        closeModal();
+      }
+    };
     window.addEventListener("keydown", handleKeyDown);
+
     return () => {
       window.removeEventListener("keydown", handleKeyDown);
     };
-  }, []);
+  }, [closeModal]);
   useEffect(() => {
-    console.log(counter);
+    // console.log(counter);
   }, [counter]);
+
+  const handleBackdropClose = (e) => {
+    if (e.target === e.currentTarget) {
+      closeModal();
+    }
+  };
   return (
-    <div className={css.backdrop}>
+    <div className={css.backdrop} onClick={handleBackdropClose}>
       <div className={css.modal}>
         <button
           type="button"

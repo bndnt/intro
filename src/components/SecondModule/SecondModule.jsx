@@ -1,7 +1,7 @@
 import { useState } from "react";
 import Bar from "../Bar/Bar";
 import SecondModuleModal from "../SecondModuleModal/SecondModuleModal";
-
+import screen1 from "../../assets/img/screen1.jpg";
 export default function SecondModule() {
   const [counter, setCounter] = useState(0);
   const [isLoremOpen, setIsLoremOpen] = useState(false);
@@ -342,16 +342,21 @@ const App = () => {
         </li>
       </ol>
       <h3>Етап оновлення</h3>
+      <p>
+        Функція, яка виконується кожен раз, після зміни пропсів, або стейту
+        компонента
+      </p>
       <pre>
-        <code>{``}</code>
+        <code>{`  useEffect(() => {
+            console.log(counter);
+          }, [counter]);`}</code>
       </pre>
       <p>
         <b>Для чого використовується?</b>
       </p>
       <ol>
-        <li></li>
-        <li></li>
-        <li></li>
+        <li>Надсилатися мережеві запити за даними після оновлення.</li>
+        <li>Синхронізація данних з localStorage.</li>
       </ol>
       <h3>Розглянемо ЖЦ на прикладі модального вікна</h3>
       <p>Створимо компонент Modal та додамо базову розмітку</p>
@@ -430,7 +435,7 @@ export default {
       <p>Console:</p>
       <code>{` Modal is mounted!`}</code>
       <p>
-        <b>1 - Розмонтування</b>
+        <b>2 - Розмонтування</b>
       </p>
       <pre>
         <code>{`useEffect(() => {
@@ -463,6 +468,67 @@ export default {
             console.log(counter);
           }, [counter]);`}</code>
       </pre>
+      <p>
+        <b>3 - Оновлення</b>
+      </p>
+      <pre>
+        <code>
+          {` useEffect(() => {
+            // console.log(counter);
+          }, [counter]);`}
+        </code>
+      </pre>
+      <p>
+        <b>
+          Створимо ефект на закриття модального вікна по кліку на кнопку Escape
+        </b>
+      </p>
+      <pre>
+        <code>{`  useEffect(() => {
+          // console.log("Modal is mounted!");
+          const handleKeyDown = (e) => {
+            // console.log("keydown");
+            // console.log(e);
+            if (e.code === "Escape") {
+              closeModal();
+            }
+          };
+          window.addEventListener("keydown", handleKeyDown);
+      
+          return () => {
+            window.removeEventListener("keydown", handleKeyDown);
+          };
+        }, []);`}</code>
+      </pre>
+      <p>
+        проте у такому записі юзефект починає скаржитися та просить додати
+        посилання на відстеження функції
+      </p>
+      <img src={screen1} alt="img" />
+      <p>Тому додамо відстеження функції у масив залежностей ефекту</p>
+      <p>
+        <b>
+          Тепер додамо можливість закриття модального вікна по кліку на бекдроп
+        </b>
+      </p>
+      <p>
+        Щоб можальне вікно закривалося по кліку тільки на бекдроб необхідно
+        виконати перевірку по таргерту елемента, на який відбувається клік
+      </p>
+      <pre>
+        <code>{`if (e.target === e.currentTarget) {}`}</code>
+      </pre>
+      <ul>
+        <li>
+          <code>{`e.target`}</code> - елемент, на який відбулося натискання
+        </li>
+        <li>
+          {" "}
+          <code>{`e.currentTarget`}</code> - елемент, на якому висить слухач
+          події{" "}
+          <code>{`<div className={css.backdrop} onClick={handleBackdropClose}></div>`}</code>
+        </li>
+      </ul>
       <button type="button" onClick={openModal}>
         Open modal
       </button>
