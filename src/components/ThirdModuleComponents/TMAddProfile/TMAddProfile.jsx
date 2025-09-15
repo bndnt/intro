@@ -6,7 +6,7 @@ import css from "./TMAddProfile.module.css";
 //     "hasPhisicalAdress": false,
 //     "avatar": "https://www.svgrepo.com/show/446502/avatar.svg"
 
-const TMAddProfile = ({ addProfile, onDeleteProfile }) => {
+const TMAddProfile = ({ addProfile }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     const formElements = e.currentTarget.elements;

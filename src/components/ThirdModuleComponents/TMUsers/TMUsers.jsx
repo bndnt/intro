@@ -5,6 +5,7 @@ import { useState } from "react";
 import { nanoid } from "nanoid";
 const TMUsers = () => {
   const [users, setUsers] = useState(userData);
+  const [filter, setFilter] = useState("");
   const addProfile = (profile) => {
     const finalProfile = {
       ...profile,
@@ -18,11 +19,27 @@ const TMUsers = () => {
     setUsers(users.filter((item) => item.id !== profileId));
     // console.log("profileId", profileId);
   };
+  const handleFilter = (e) => {
+    const value = e.target.value;
+    setFilter(value);
+  };
+  const filteredProfile = users.filter((item) =>
+    item.name.toLocaleLowerCase().includes(filter.toLocaleLowerCase())
+  );
   return (
     <div>
       <TMAddProfile addProfile={addProfile} />
+      <div className="searchProfileBlock">
+        <h3>Search by name</h3>
+        <input
+          type="text"
+          placeholder="Search by name"
+          value={filter}
+          onChange={handleFilter}
+        />
+      </div>
       <div className="usersFlex">
-        {users.map((user) => {
+        {filteredProfile.map((user) => {
           return (
             <Profile
               key={user.email}
