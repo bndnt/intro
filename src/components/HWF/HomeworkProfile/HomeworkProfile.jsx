@@ -1,6 +1,6 @@
 import css from "./HomeworkProfile.module.css";
 import HomeworkProfileComponent from "../HomeworkProfileComponent/HomeworkProfileComponent";
-import userData from "../../userData.json";
+import userData from "../../../userData.json";
 export default function HomeworkProfile() {
   return (
     <div>

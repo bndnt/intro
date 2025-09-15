@@ -1,7 +1,7 @@
-import HWSDescriptiom from "../HWS/HWSDescriptiom/HWSDescriptiom";
-import HWSOptions from "../HWS/HWSOptions/HWSOptions";
-import HWSFeedback from "../HWS/HWSFeedback/HWSFeedback";
-import HWSNotification from "../HWS/HWSNotification/HWSNotification";
+import HWSDescriptiom from "../HWSDescriptiom/HWSDescriptiom";
+import HWSOptions from "../HWSOptions/HWSOptions";
+import HWSFeedback from "../HWSFeedback/HWSFeedback";
+import HWSNotification from "../HWSNotification/HWSNotification";
 import css from "./SipHappensCafe.module.css";
 import { useEffect, useState } from "react";
 

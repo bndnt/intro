@@ -1,7 +1,7 @@
 import { useState } from "react";
 import Bar from "../Bar/Bar";
 import SecondModuleModal from "../SecondModuleModal/SecondModuleModal";
-import SipHappensCafe from "../SipHappensCafe/SipHappensCafe";
+import SipHappensCafe from "../HWS/SipHappensCafe/SipHappensCafe";
 import screen1 from "../../assets/img/screen1.jpg";
 import screen2 from "../../assets/img/screen2.png";
 import css from "./SecondModule.module.css";

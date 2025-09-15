@@ -1,5 +1,5 @@
 import css from "./HomeworkTransaction.module.css";
-import TransactionData from "../../transactions.json";
+import TransactionData from "../../../transactions.json";
 import TransactionHistory from "../TransactionHistory/TransactionHistory";
 export default function HomeworkTransaction() {
   return (

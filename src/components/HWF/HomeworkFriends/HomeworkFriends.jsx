@@ -1,5 +1,5 @@
 import FriendList from "../FriendList/FriendList";
-import friendsData from "../../friends.json";
+import friendsData from "../../../friends.json";
 
 import css from "./HomeworkFriends.module.css";
 export default function HomeworkFriends() {

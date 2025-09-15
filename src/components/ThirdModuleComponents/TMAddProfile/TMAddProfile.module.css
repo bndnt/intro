@@ -1,0 +1,29 @@
+.labelCheckbox {
+  display: flex;
+  margin-bottom: 10px;
+}
+.label {
+  display: block;
+  width: 100%;
+  margin-bottom: 15px;
+}
+
+.label span {
+  display: block;
+}
+
+.label input {
+  display: block;
+  width: 100%;
+}
+input[type="radio"],
+input[type="checkbox"] {
+  width: auto;
+}
+.radioBox {
+  margin-bottom: 10px;
+}
+.labelCheckbox span {
+  padding-left: 10px;
+  display: inline-block;
+}
