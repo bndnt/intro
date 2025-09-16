@@ -5,6 +5,9 @@ import SipHappensCafe from "../HWS/SipHappensCafe/SipHappensCafe";
 import screen1 from "../../assets/img/screen1.jpg";
 import screen2 from "../../assets/img/screen2.png";
 import css from "./SecondModule.module.css";
+import Prism from "prismjs";
+import "prismjs/themes/prism.css";
+import "prismjs/components/prism-jsx";
 export default function SecondModule() {
   const [counter, setCounter] = useState(0);
   const [isLoremOpen, setIsLoremOpen] = useState(false);
@@ -51,7 +54,7 @@ export default function SecondModule() {
         інтерфейсі. Проте це не працюватиме, ви можете спробувати!
       </p>
       <pre>
-        <code>{`import { useState } from 'react';
+        <code className="language-jsx">{`import { useState } from 'react';
 
 const App = () => {
 	const [ clicks, setClicks ] = useState(0);
@@ -72,11 +75,11 @@ const App = () => {
       <h3>Приклад приховання списку друзів</h3>
       <p>Дану задачу ми вирішуємо двома способами:</p>
       <pre>
-        <code>{`setIsLoremOpen((actualState) => !actualState);
+        <code className="language-jsx">{`setIsLoremOpen((actualState) => !actualState);
 `}</code>
       </pre>
       <pre>
-        <code>{`setIsLoremOpen(!isLoremOpen);`}</code>
+        <code className="language-jsx">{`setIsLoremOpen(!isLoremOpen);`}</code>
       </pre>
       <h3>Результат виконання завдання</h3>
       {isLoremOpen && (
@@ -97,7 +100,7 @@ const App = () => {
         ви спробуєте оновити стан таким чином, ви втратите властивість
       </p>
       <pre>
-        <code>{`const updateX = () => {
+        <code className="language-jsx">{`const updateX = () => {
 	setValues({
 		x: values.x + 1
 	});
@@ -116,7 +119,7 @@ const App = () => {
         стану та додавання одиниці відповідно до імені
       </p>
       <pre>
-        <code>{` const handleBarAdd = (wineName) => {
+        <code className="language-jsx">{` const handleBarAdd = (wineName) => {
     if (wineName === "red") {
       setBar({ ...bar, red: bar["red"] + 1 });
     }
@@ -138,7 +141,7 @@ const App = () => {
         працювати:
       </p>
       <pre>
-        <code>{`const handleBarAdd = (wineName) => {
+        <code className="language-jsx">{`const handleBarAdd = (wineName) => {
     if (wineName === "red") {
       setBar({ ...bar, red: bar["red"] + 1 });
     } else if (wineName === "white") {
@@ -154,7 +157,7 @@ const App = () => {
         функцію можна та треба оптимізувати
       </p>
       <pre>
-        <code>{` const handleBarAdd = (wineName) => {
+        <code className="language-jsx">{` const handleBarAdd = (wineName) => {
     setBar({ ...bar, [wineName]: bar[wineName] + 1 });
   };`}</code>
       </pre>
@@ -219,7 +222,7 @@ const App = () => {
         своєму стані.
       </p>
       <pre>
-        <code>{`import { useState, useEffect } from "react";
+        <code className="language-jsx">{`import { useState, useEffect } from "react";
 
 const App = () => {
   const [clicks, setClicks] = useState(0);
@@ -237,7 +240,7 @@ const App = () => {
         наприклад, змінювати заголовок HTML-документа.
       </p>
       <pre>
-        <code>
+        <code className="language-jsx">
           {`import { useState, useEffect } from "react";
 
 const App = () => {
@@ -312,7 +315,7 @@ const App = () => {
         з розмітки.
       </p>
       <pre>
-        <code>{`useEffect(() => {
+        <code className="language-jsx">{`useEffect(() => {
             console.log("Modal is mounted!");
             return () => {
               console.log("Modal is unmounted");
@@ -331,7 +334,7 @@ const App = () => {
           Відхиляти мережеві запити за даними після монтування post, get...
         </li>
         <li>
-          Для видалення глобальних слухачів подій{" "}
+          Для видалення глобальних слухачів подій
           <code>window.removeEventListener</code>.У випадку невиконання даного
           етапу це призведе до витоку пам`яті та додаток закрашиться.
         </li>
@@ -350,7 +353,7 @@ const App = () => {
         компонента
       </p>
       <pre>
-        <code>{`  useEffect(() => {
+        <code className="language-jsx">{`  useEffect(() => {
             console.log(counter);
           }, [counter]);`}</code>
       </pre>
@@ -364,7 +367,7 @@ const App = () => {
       <h3>Розглянемо ЖЦ на прикладі модального вікна</h3>
       <p>Створимо компонент Modal та додамо базову розмітку</p>
       <pre>
-        <code>{`<div className={css.backdrop}>
+        <code className="language-jsx">{`<div className={css.backdrop}>
             <div className={css.modal}>
               <button
                 type="button"
@@ -385,7 +388,7 @@ const App = () => {
       <ul>
         <li>
           <b>
-            <code>{`<div className={css.backdrop}>`}</code>
+            <code className="language-jsx">{`<div className={css.backdrop}>`}</code>
           </b>
           буде слугувати фоном, що буде з`являтися з модальним вікном`
         </li>
@@ -403,8 +406,7 @@ const App = () => {
         підключимо його у <code>vite.config.js</code>
       </p>
       <pre>
-        <code>{`import svgr from "vite-plugin-svgr";
-
+        <code className="language-jsx">{`import svgr from "vite-plugin-svgr";
 export default {
   plugins: [svgr()],
 };`}</code>
@@ -415,12 +417,12 @@ export default {
         відкна
       </p>
       <pre>
-        <code>{`  const openModal = () => {
+        <code className="language-jsx">{`  const openModal = () => {
     setIsModalOpen(true);
   };`}</code>
       </pre>
       <pre>
-        <code>{`const closeModal = () => {
+        <code className="language-jsx">{`const closeModal = () => {
     setIsModalOpen(false);
   };`}</code>
       </pre>
@@ -430,7 +432,7 @@ export default {
         <b>1 - Монтування</b>
       </p>
       <pre>
-        <code>{`const SecondModuleModal = ({ closeModal }) => {
+        <code className="language-jsx">{`const SecondModuleModal = ({ closeModal }) => {
         useEffect(() => {
           console.log("Modal is mounted!");
         }, []);`}</code>
@@ -441,18 +443,21 @@ export default {
         <b>2 - Розмонтування</b>
       </p>
       <pre>
-        <code>{`useEffect(() => {
+        <code className="language-jsx">
+          {" "}
+          {`useEffect(() => {
             console.log("Modal is mounted!");
             return () => {
               console.log("Modal is unmounted");
             };
-          }, []);`}</code>
+          }, []);`}
+        </code>
       </pre>
       <p>Console:</p>
       <code>{`Modal is unmounted`}</code>
       <p>Створимо лічильник всередині модального вікна</p>
       <pre>
-        <code>{`
+        <code className="language-jsx">{`
           const [counter, setCounter] = useState(0);
 
        <p>Counter state: {counter}</p>
@@ -467,7 +472,7 @@ export default {
       </pre>
       <p>За допомогою useEffect підпишимося на актуальне значення лічилька</p>
       <pre>
-        <code>{`  useEffect(() => {
+        <code className="language-jsx">{`  useEffect(() => {
             console.log(counter);
           }, [counter]);`}</code>
       </pre>
@@ -475,7 +480,7 @@ export default {
         <b>3 - Оновлення</b>
       </p>
       <pre>
-        <code>
+        <code className="language-jsx">
           {` useEffect(() => {
             // console.log(counter);
           }, [counter]);`}
@@ -487,7 +492,7 @@ export default {
         </b>
       </p>
       <pre>
-        <code>{`  useEffect(() => {
+        <code className="language-jsx">{`useEffect(() => {
           // console.log("Modal is mounted!");
           const handleKeyDown = (e) => {
             // console.log("keydown");
@@ -519,7 +524,7 @@ export default {
         виконати перевірку по таргерту елемента, на який відбувається клік
       </p>
       <pre>
-        <code>{`if (e.target === e.currentTarget) {}`}</code>
+        <code className="language-jsx">{`if (e.target === e.currentTarget) {}`}</code>
       </pre>
       <ul>
         <li>
@@ -550,7 +555,7 @@ export default {
           сховищі створимо змінну та підпишимося на стейт лічильника
         </li>
         <pre>
-          <code>{`  useEffect(() => {
+          <code className="language-jsx">{`useEffect(() => {
               localStorage.setItem("modal-counter", counter);
             }, [counter]);`}</code>
         </pre>
@@ -577,7 +582,7 @@ export default {
           необхідно змінити стартове значення стану лічильника.
         </li>
         <pre>
-          <code>{`const [counter, setCounter] = useState(() => {
+          <code className="language-jsx">{`const [counter, setCounter] = useState(() => {
     return parseInt(localStorage.getItem("modal-counter"));
   });`}</code>
         </pre>
@@ -589,7 +594,7 @@ export default {
           змінити значення стану на 0.
         </li>
         <pre>
-          <code>{`    return parseInt(localStorage.getItem("modal-counter") ?? 0);
+          <code className="language-jsx">{`return parseInt(localStorage.getItem("modal-counter") ?? 0);
 `}</code>
         </pre>
       </ol>

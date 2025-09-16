@@ -1,0 +1,16 @@
+.label {
+  display: block;
+  margin-bottom: 10px;
+}
+.formBtn {
+  display: block;
+  width: 100%;
+
+  margin: 10px 0;
+}
+.errorSpan {
+  display: block;
+  position: relative;
+  color: brown;
+  padding: 2px 5px;
+}

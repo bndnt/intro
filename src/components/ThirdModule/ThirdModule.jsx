@@ -1,5 +1,6 @@
 import css from "./ThirdModule.module.css";
 import TMUsers from "../ThirdModuleComponents/TMUsers/TMUsers";
+import FormikComponent from "../ThirdModuleComponents/FormikComponent/FormikComponent";
 import screenForm1 from "../../assets/img/screenForm1.png";
 import screenFilter from "../../assets/img/filterEx.png";
 import Prism from "prismjs";
@@ -21,6 +22,16 @@ const ThirdModule = () => {
       <p>
         <b>Контрольована форма - </b>форма, дані з якою мають значення у
         будь-який момент часу, що до того ж впливає на інтерфейс користувача.
+      </p>
+      <p>
+        Для <b>контрольованих </b>форм -форм, в яких на основі введених
+        користувачем даних відбуваються якісь розрахунки чи логіка -
+        <b>Formik</b>
+      </p>
+      <p>
+        Для <b>неконтрольованих</b> форм - форм, в яких збираються дані та
+        відбувається <a href="#validationLink">валідація</a> виключно під час
+        події Сабміту -<b>React hook form</b>
       </p>
       <h3>Редагування списку друзів за допомогою форми</h3>
       <p> За основу візьмемо компонент Profile з першого модуля</p>
@@ -92,7 +103,7 @@ const ThirdModule = () => {
           Напишемо функцію для сабміту форми та повісимо її на форму onSubmit
         </li>
         <pre>
-          <code>
+          <code className="language-jsx">
             {`const handleSubmit = (e) => {
   e.preventDefault();
 };`}
@@ -134,7 +145,7 @@ const ThirdModule = () => {
           компонента AddProfile
         </li>
         <pre>
-          <code>{`const addProfile = (profile) => {
+          <code className="language-jsx">{`const addProfile = (profile) => {
     console.log(profile);
   };`}</code>
         </pre>
@@ -481,7 +492,7 @@ const FeedbackForm = () => {
           <option value="bad">Bad</option>
         </Field>`}</code>
       </pre>
-      <h4>Валідація</h4>
+      <h4 id="validationLink">Валідація</h4>
       <pre>
         <code className="language-jsx">{`npm install yup`}</code>
       </pre>
@@ -494,7 +505,7 @@ const FeedbackForm = () => {
         в стані Formik у вигляді об'єкта з властивостями.
       </p>
       <pre>
-        <code>{`const FeedbackSchema = Yup.object().shape({});`}</code>
+        <code className="language-jsx">{`const FeedbackSchema = Yup.object().shape({});`}</code>
       </pre>
       <p>
         У цьому об'єкті описуємо валідацію для кожної властивості об'єкта
@@ -524,6 +535,11 @@ const FeedbackForm = () => {
   message: Yup.string().min(3, "Too short").max(256, "Too long").required("Required"),
 	level: Yup.string().oneOf(["good", "neutral", "bad"]).required("Required")
 });`}</code>
+      </pre>
+      <p>Приклад валіжації мобільного телефону</p>
+      <pre>
+        <code className="language-jsx">{`const phoneRegExp = /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/
+phoneNumber: Yup.string().matches(phoneRegExp, 'Phone number is not valid')`}</code>
       </pre>
       <p>
         Зверніть увагу на валідатори властивості level. Значенням текстового
@@ -593,19 +609,20 @@ const FeedbackForm = () => {
 `}</code>
       </pre>
       <h4>Помилки валідації</h4>
+
       <p>
         Для того щоб відобразити користувачу помилки валідації, використовується
         компонент <code>ErrorMessage</code>.
       </p>
       <pre>
-        <code>{`import { ErrorMessage } from "formik";`}</code>
+        <code className="language-jsx">{`import { ErrorMessage } from "formik";`}</code>
       </pre>
       <p>
         Додамо його до розмітки форми поруч із кожним полем, наприклад, створимо
         таку групу.
       </p>
       <pre>
-        <code>{`<div>
+        <code className="language-jsx">{`<div>
   <label htmlFor={nameFieldId}>Username</label>
   <Field type="text" name="username" id={nameFieldId} />
   <ErrorMessage name="username" component="span" />
@@ -702,8 +719,13 @@ const FeedbackForm = () => {
   );
 };`}</code>
       </pre>
+      <h3 id="formik">Приклад використання Formik</h3>
+      <FormikComponent />
+      <h3>Домашнє завдання 3 - Книга контактів</h3>
     </div>
-    //   <code className="language-jsx"></code>
+    //  <pre>
+    //     <code className="language-jsx">{``}</code>
+    //   </pre>
   );
 };
 

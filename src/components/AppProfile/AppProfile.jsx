@@ -1,5 +1,8 @@
 import Profile from "../Profile/Profile";
 import css from "./AppProfile.module.css";
+import Prism from "prismjs";
+import "prismjs/themes/prism.css";
+import "prismjs/components/prism-jsx";
 export default function AppProfile({ onDeleteProfile }) {
   const users = [
     {
@@ -63,14 +66,16 @@ export default function AppProfile({ onDeleteProfile }) {
       <section className="moduleBlock">
         <h1>Модуль 1</h1>
         <h2>Створення проєкту</h2>
-        <code>npm create vite@latest</code>
+        <pre>
+          <code className="language-jsx">npm create vite@latest</code>
+        </pre>
         <p>
           Додаємо опцію генерування Source Maps у файл налаштувань Vite, який
           розташований у кореневій папці проєкту. Відкрий файл
           <code>vite.config.js</code> та заміни його вміст на наступний код.
         </p>
         <pre>
-          <code>
+          <code className="language-jsx">
             {`import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react-swc";
 
@@ -85,15 +90,23 @@ export default defineConfig({
         </pre>
         <h2>Умовний рендеринг</h2>
         <p>Оператор &&</p>
-        <code>умова ? вміст_якщо_умова_true : вміст_якщо_умова_false</code>
+
+        <pre>
+          <code className="language-jsx">
+            умова ? вміст_якщо_умова_true : вміст_якщо_умова_false
+          </code>
+        </pre>
+
         <p>
           У JSX вираз обгортається у фігурні дужки, щоб відобразити його
           результат.
         </p>
-        <code>{`<div>
+        <pre>
+          <code className="language-jsx">{`<div>
 	{умова ? вміст_якщо_умова_true : вміст_якщо_умова_false}
 </div>
 `}</code>
+        </pre>
         <p>
           У прикладі нижче можна буде використати один з двох варіантів умовного
           рендерингу
@@ -112,7 +125,7 @@ export default defineConfig({
           даних і метод <code>map()</code>. Callback-функція map() для кожного
           елемента колекції повертає розмітку.
         </p>
-        <code>{`[1, 2, 3].map((item) => {
+        <code className="language-jsx">{`[1, 2, 3].map((item) => {
         return <p>{item}</p>;
       });`}</code>
         <p>
@@ -120,8 +133,7 @@ export default defineConfig({
           передамо пропси
         </p>
         <pre>
-          {" "}
-          <code>{`export default function Profile({
+          <code className="language-jsx">{`export default function Profile({
         name,
         phone,
         email,
@@ -149,7 +161,7 @@ export default defineConfig({
         </pre>
         <p>Створимо змінну та передамо у неї об`єкт з данними профілів</p>
         <pre>
-          <code>{`const users = [
+          <code className="language-jsx">{`const users = [
     {
       name: "Sasha",
       phone: "+380594783340",
@@ -234,7 +246,7 @@ export default defineConfig({
         </pre>
         <p>Виводимо наш компонент в App</p>
         <pre>
-          <code>{` {users.map((user) => {
+          <code className="language-jsx">{` {users.map((user) => {
           return (
             <Profile
               key={user.email}

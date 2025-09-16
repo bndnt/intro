@@ -14,6 +14,7 @@ import HomeworkFriends from "./HWF/HomeworkFriends/HomeworkFriends";
 import HomeworkTransaction from "./HWF/HomeworkTransaction/HomeworkTransaction";
 import SecondModule from "./SecondModule/SecondModule";
 import ThirdModule from "./ThirdModule/ThirdModule";
+import ThirdHomework from "./HWT/ThirdHomework/ThirdHomework";
 export default function App() {
   useEffect(() => {
     Prism.highlightAll(); // пробегается по всему DOM и подсвечивает <pre><code>
@@ -32,6 +33,7 @@ export default function App() {
       </div>
       <div className="moduleBlock">
         <ThirdModule />
+        <ThirdHomework />
       </div>
 
       <ScrollToTopButton />
