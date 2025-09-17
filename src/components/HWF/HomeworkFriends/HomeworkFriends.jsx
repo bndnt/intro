@@ -16,7 +16,7 @@ export default function HomeworkFriends() {
         структури.
       </p>
       <pre>
-        <code>{`import FriendListItem from "../FriendListItem/FriendListItem";
+        <code className="language-jsx">{`import FriendListItem from "../FriendListItem/FriendListItem";
 export default function FriendList({ friends }) {
   return (
     <div>
@@ -49,7 +49,7 @@ export default function FriendList({ friends }) {
         розмітку наступної структури.
       </p>
       <pre>
-        <code>{`export default function FriendListItem({ avatar, name, isOnline }) {
+        <code className="language-jsx">{`export default function FriendListItem({ avatar, name, isOnline }) {
   return (
     <div>
       <img src={avatar} alt="Avatar" width="48" />
@@ -66,10 +66,10 @@ export default function FriendList({ friends }) {
         можна зробити за допомогою різних CSS-класів.
       </p>
       <pre>
-        <code>{`npm install --save clsx`}</code>
+        <code className="language-jsx">{`npm install --save clsx`}</code>
       </pre>
       <pre>
-        <code>
+        <code className="language-jsx">
           {` <p className={clsx(css.friendStatus, {
             [css.isOnline]: isOnline,
             [css.isOffline]: !isOnline,
@@ -85,7 +85,7 @@ export default function FriendList({ friends }) {
         App, щоб передати ці дані пропсами.
       </p>
       <pre>
-        <code>{`import userData from "../userData.json";
+        <code className="language-jsx">{`import userData from "../userData.json";
 import friends from "../friends.json";
 
 const App = () => {

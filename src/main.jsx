@@ -6,6 +6,8 @@ import { createRoot } from "react-dom/client";
 import "modern-normalize";
 import "./index.css";
 import App from "./components/App";
+import AppContext from "./components/FourthModule/AppContext";
+import { UserContextProvider } from "./components/context/UserContext";
 //     Метод createRoot приймає посилання на існуючий DOM-елемент,
 // у нашому випадку це div#root з index.html, і створює корінь, в який буде рендеритися додаток.
 //     Метод render приймає посилання на компонент, який потрібно відрендерити.
@@ -18,6 +20,9 @@ createRoot(document.getElementById("root")).render(
   <StrictMode>
     <App />
   </StrictMode>
+  // <UserContextProvider>
+  //   <AppContext />
+  // </UserContextProvider>
 );
 
 // Суворий режим

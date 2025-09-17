@@ -22,7 +22,7 @@ export default function HomeworkTransaction() {
         наведена розмітка двох транзакцій.
       </p>
       <pre>
-        <code>
+        <code className="language-jsx">
           {`export default function TransactionHistory({ items }) {
                 return (
                   <div>

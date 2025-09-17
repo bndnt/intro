@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import css from "./SecondModuleModal.module.css";
+import { createPortal } from "react-dom";
 const SecondModuleModal = ({ closeModal }) => {
   const [counter, setCounter] = useState(() => {
     return parseInt(localStorage.getItem("modal-counter") ?? 0);
@@ -32,7 +33,7 @@ const SecondModuleModal = ({ closeModal }) => {
       closeModal();
     }
   };
-  return (
+  return createPortal(
     <div className={css.backdrop} onClick={handleBackdropClose}>
       <div className={css.modal}>
         <button
@@ -65,7 +66,8 @@ const SecondModuleModal = ({ closeModal }) => {
           Change counter`s state
         </button>
       </div>
-    </div>
+    </div>,
+    document.getElementById("modal-root")
   );
 };
 
