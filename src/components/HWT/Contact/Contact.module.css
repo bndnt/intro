@@ -1,0 +1,14 @@
+.contactInfo {
+  width: 70%;
+}
+.contactName {
+  margin: 5px 0;
+}
+.contactNameText {
+  margin-left: 5px;
+}
+.contactPhoneText {
+  margin-left: 5px;
+  font-size: 14px;
+  font-style: italic;
+}

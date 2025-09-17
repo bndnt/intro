@@ -1,0 +1,14 @@
+.contactBlock {
+  display: flex;
+  width: 100%;
+  max-width: 320px;
+  padding: 8px 15px;
+  align-items: center;
+  height: 100px;
+  border: 1px solid black;
+  margin-bottom: 10px;
+  border-radius: 15px;
+}
+.contactList {
+  padding: 0;
+}

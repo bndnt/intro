@@ -1,0 +1,22 @@
+.formContainer {
+  padding: 15px;
+  border: 1px solid black;
+  border-radius: 10px;
+  width: 100%;
+  max-width: 320px;
+}
+.formLabel {
+  display: block;
+  margin-bottom: 15px;
+}
+.formLabel span {
+  display: block;
+}
+.formLabel input {
+  width: 100%;
+}
+.errorSpan {
+  padding: 3px 5px;
+  font-weight: 500;
+  color: brown;
+}

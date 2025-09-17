@@ -95,6 +95,7 @@ const ThirdModule = () => {
           Важливо додати поля, що будуть обов`язковими при надсиланні форми
         </li>
       </ol>
+      <h4>Додавання нового користувача</h4>
       <p>
         Тепер можна переходити до написання логіки під час сабміту по кнопці
       </p>
@@ -104,9 +105,7 @@ const ThirdModule = () => {
         </li>
         <pre>
           <code className="language-jsx">
-            {`const handleSubmit = (e) => {
-  e.preventDefault();
-};`}
+            {`const handleSubmit = (e) => {e.preventDefault();};`}
           </code>
         </pre>
         <li>
@@ -171,8 +170,7 @@ id: nanoid(),
         </li>
         <li>Додаємо новий профіль до загального списку користувачів</li>
         <pre>
-          <code>{`setUsers([finalProfile, ...users]);
-`}</code>
+          <code>{`setUsers([finalProfile, ...users]);`}</code>
         </pre>
 
         <pre>
@@ -295,14 +293,23 @@ id: nanoid(),
           
           export default TMAddProfile;`}</code>
         </pre>
-        <li>Напишемо функцію видалення профілю з допомогою filter</li>
-        <p>Приклад логіки filter</p>
-        <img src={screenFilter} alt="img" style={{ width: "300px" }} />
-        <pre>
-          <code className="language-jsx">{`const onDeleteProfile = (profileId) => {
-    setUsers(users.filter((item) => item.id !== profileId));};`}</code>
-        </pre>
       </ol>
+      <h4>Функція видалення </h4>
+      <p>Приклад логіки filter для видалення профілю з допомогою filter</p>
+      <img src={screenFilter} alt="img" style={{ width: "300px" }} />
+      <p>Функція видалення</p>
+      <pre>
+        <code className="language-jsx">{`const onDeleteProfile = (profileId) => {
+    setUsers(users.filter((item) => item.id !== profileId));};`}</code>
+      </pre>
+      <p>
+        По пропсам передаємо функцію до компонента Профілю та викликаємо
+        колл-бек функцію у кнопці з аргументом і дентифікатора
+      </p>
+      <pre>
+        <code className="language-jsx">{`<button type="button" className={css.profileDeleteBtn} onClick={() => onDeleteProfile(id)} >❌ </button>`}</code>
+      </pre>
+      <h4>Функція пошуку </h4>
       <p>
         Реалізуємо пошук по імени серед користувачів - пошук підстроки у строці
       </p>
@@ -310,6 +317,8 @@ id: nanoid(),
         <li>Створимо стан для фильтрації</li>
         <pre>
           <code>{`const [filter, setFilter] = useState("");`}</code>
+        </pre>
+        <pre>
           <code>{`<input type="text" placeholder="Search by name" value={filter} />`}</code>
         </pre>
         <p>
@@ -652,27 +661,23 @@ const FeedbackForm = () => {
         <code className="language-jsx">{`import { Formik, Form, Field, ErrorMessage } from "formik";
 import { useId } from "react";
 import * as Yup from "yup";
-
 const FeedbackSchema = Yup.object().shape({
   username: Yup.string().min(2, "Too Short!").max(50, "Too Long!").required("Required"),
   email: Yup.string().email("Must be a valid email!").required("Required"),
   message: Yup.string().min(3, "Too short").max(256, "Too long").required("Required"),
   level: Yup.string().oneOf(["good", "neutral", "bad"]).required("Required"),
 });
-
 const initialValues = {
   username: "",
   email: "",
   message: "",
   level: "good",
 };
-
 const FeedbackForm = () => {
   const nameFieldId = useId();
   const emailFieldId = useId();
   const msgFieldId = useId();
   const levelFieldId = useId();
-
   const handleSubmit = (values, actions) => {
     console.log(values);
     actions.resetForm();
@@ -682,27 +687,20 @@ const FeedbackForm = () => {
     <Formik
       initialValues={initialValues}
       onSubmit={handleSubmit}
-      validationSchema={FeedbackSchema}
-    >
+      validationSchema={FeedbackSchema} >
       <Form>
         <div>
           <label htmlFor={nameFieldId}>Username</label>
           <Field type="text" name="username" id={nameFieldId} />
-          <ErrorMessage name="username" component="span" />
-        </div>
-
+          <ErrorMessage name="username" component="span" /> </div>
         <div>
           <label htmlFor={emailFieldId}>Email</label>
           <Field type="email" name="email" id={emailFieldId} />
-          <ErrorMessage name="email" component="span" />
-        </div>
-
+          <ErrorMessage name="email" component="span" /> </div>
         <div>
           <label htmlFor={msgFieldId}>Message</label>
           <Field as="textarea" name="message" id={msgFieldId} rows="5" />
-          <ErrorMessage name="message" component="span" />
-        </div>
-
+          <ErrorMessage name="message" component="span" /></div>
         <div>
           <label htmlFor={levelFieldId}>Service satisfaction level</label>
           <Field as="select" name="level" id={levelFieldId}>
@@ -712,12 +710,7 @@ const FeedbackForm = () => {
           </Field>
           <ErrorMessage name="level" component="span" />
         </div>
-
-        <button type="submit">Submit</button>
-      </Form>
-    </Formik>
-  );
-};`}</code>
+        <button type="submit">Submit</button> </Form> </Formik>);};`}</code>
       </pre>
       <h3 id="formik">Приклад використання Formik</h3>
       <FormikComponent />

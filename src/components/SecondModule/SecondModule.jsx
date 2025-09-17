@@ -444,7 +444,6 @@ export default {
       </p>
       <pre>
         <code className="language-jsx">
-          {" "}
           {`useEffect(() => {
             console.log("Modal is mounted!");
             return () => {
@@ -531,10 +530,9 @@ export default {
           <code>{`e.target`}</code> - елемент, на який відбулося натискання
         </li>
         <li>
-          {" "}
           <code>{`e.currentTarget`}</code> - елемент, на якому висить слухач
           події{" "}
-          <code>{`<div className={css.backdrop} onClick={handleBackdropClose}></div>`}</code>
+          <code className="language-jsx">{`<div className={css.backdrop} onClick={handleBackdropClose}></div>`}</code>
         </li>
       </ul>
       <button type="button" onClick={openModal} className={css.openModalBtn}>
@@ -567,7 +565,7 @@ export default {
           </b>
         </p>
         <pre>
-          <code>{`window.localStorage.setItem("key", JSON.stringify());
+          <code className="language-jsx">{`window.localStorage.setItem("key", JSON.stringify());
 `}</code>
         </pre>
         <p>
@@ -602,6 +600,20 @@ export default {
       <h2>
         Домашне завдання 2.1 - Віджет відгуків про кав'ярню Sip Happens Café.
       </h2>
+      <p>Приклад збереження до локального сховища обєкт елементів</p>
+      <pre>
+        <code className="language-jsx">{` useEffect(() => {
+            localStorage.setItem("cafe-review", JSON.stringify(review));
+          }, [review]);`}</code>
+      </pre>
+      <pre>
+        <code className="language-jsx">{`const [review, setReview] = useState(() => {
+    const storedReview = localStorage.getItem("cafe-review");
+    return storedReview
+      ? JSON.parse(storedReview)
+      : { good: 0, neutral: 0, bad: 0 };
+  });`}</code>
+      </pre>
       <SipHappensCafe />
     </div>
   );
