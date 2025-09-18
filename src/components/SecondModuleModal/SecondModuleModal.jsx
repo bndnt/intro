@@ -1,10 +1,17 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import css from "./SecondModuleModal.module.css";
 import { createPortal } from "react-dom";
 const SecondModuleModal = ({ closeModal }) => {
   const [counter, setCounter] = useState(() => {
     return parseInt(localStorage.getItem("modal-counter") ?? 0);
   });
+  const buttonRef = useRef();
+  // console.log(buttonRef);
+  const handleRefBtn = () => {
+    console.log(buttonRef.current);
+    console.log(getComputedStyle(buttonRef.current).width);
+    console.log(buttonRef.current.getBoundingClientRect());
+  };
   // useEffect(() = {
   //     console.log(`${counter}`);
 
@@ -58,6 +65,9 @@ const SecondModuleModal = ({ closeModal }) => {
           recusandae.
         </p>
         <p>Counter state: {counter}</p>
+        <button ref={buttonRef} onClick={handleRefBtn} type="button">
+          Button for Ref
+        </button>
         {/* <button type="button" onClick={() => setCounter(counter + 1)}> */}
         <button
           type="button"
