@@ -24,7 +24,7 @@ export default function App() {
   return (
     <div className="page">
       <h1>Посібник-шпора по лекціям GoIt з React </h1>
-      {/* <div className="moduleBlock">
+      <div className="moduleBlock">
         <AppProfile />
         <HomeworkProfile />
         <HomeworkFriends />
@@ -36,7 +36,7 @@ export default function App() {
       <div className="moduleBlock">
         <ThirdModule />
         <ThirdHomework />
-      </div> */}
+      </div>
       <div className="moduleBlock">
         <FourthModule />
       </div>
