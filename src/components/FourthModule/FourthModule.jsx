@@ -18,7 +18,6 @@ const FourthModule = () => {
       <pre>
         <code className="language-jsx">{`npm install axios`}</code>
       </pre>
-
       <pre>
         <code className="language-jsx">{`const App = () => {
   
@@ -288,7 +287,6 @@ import { fetchArticlesWithTopic } from "../articles-api.js";
       </pre>
       <h3>Пошук через форму</h3>
       <p>Створимо компонент форми пошуку:</p>
-
       <pre>
         <code className="language-jsx">{`// src/components/SearchForm.jsx
 
@@ -524,8 +522,104 @@ export default UserMenu;
     fetchPosts();
   }, []);`}</code>
       </pre>
-      <AppWithHTTPS />
+      <p>Замінемо then...catch yf async...await try...catch</p>
+      <pre>
+        <code className="language-jsx">{`useEffect(() => {
+    const fetchPosts = async () => {
+      try {
+        setLoading(true);
+        const { data } = await axios.get("https://dummyjson.com/posts");
+        setPosts(data.posts);
+      } catch (err) {
+        setError(err.message);
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchPosts();
+  }, []);`}</code>
+      </pre>
+      <h3>Пошук серед постів</h3>
 
+      <p>Створимо форму</p>
+      <pre>
+        <code className="language-jsx">{`const INITIAL_VALUES = {
+          searchTerm: "",
+        };
+        const FormSchema = Yup.object().shape({
+          searchTerm: Yup.string()
+            .min(2, "Too Short!")
+            .max(50, "Too Long")
+            .required("required"),
+        });
+        const SearchPost = ({ onSearch }) => {
+          const handleSubmit = (values, actions) => {
+            onSearch(values.searchTerm);
+            actions.resetForm();
+          };
+        
+          return (
+            <div>
+              <Formik
+                initialValues={INITIAL_VALUES}
+                onSubmit={handleSubmit}
+                validationSchema={FormSchema}
+              >
+                <Form>
+                  <label>
+                    <Field name="searchTerm" type="text" placeholder="Search " />
+                    <ErrorMessage name="searchTerm" component="span" />
+                  </label>
+        
+                  <button type="submit">Search</button>
+                </Form>
+              </Formik>
+            </div>
+          );
+        };
+        
+        export default SearchPost;
+        `}</code>
+      </pre>
+      <p>Напишемо функцію в Апп</p>
+      <pre>
+        <code className="language-jsx">{` const onSearch = (searchTerm) => {
+    console.log(searchTerm);
+  };`}</code>
+      </pre>
+      <p>Створемо стан</p>
+      <pre>
+        <code className="language-jsx">{`const [searchValue, setSearchValue] = useState(null);
+        `}</code>
+      </pre>
+      <p>Додаємо другий запит </p>
+      <pre>
+        <code className="language-jsx">{`export const RequestPostsBySearchValue = async (searchValue) => {
+  const { data } = await axios.get(
+    \`https://dummyjson.com/posts/search?q=\${searchValue}\`);
+  return data;
+};`}</code>
+      </pre>
+      <p>Відслідкуємо змінну</p>
+      <pre>
+        <code className="language-jsx">{` useEffect(() => {
+            if (searchValue === null) return;
+            const fetchPostsBySearchValue = async () => {
+              try {
+                setLoading(true);
+                const data = await RequestPostsBySearchValue(searchValue);
+                setPosts(data.posts);
+              } catch (err) {
+                setError(err.message);
+              } finally {
+                setLoading(false);
+              }
+            };
+            fetchPostsBySearchValue();
+          }, [searchValue]);`}</code>
+      </pre>
+      <h3>Результат виконання коду</h3>
+      <AppWithHTTPS />
       <pre>
         <code className="language-jsx">{``}</code>
       </pre>

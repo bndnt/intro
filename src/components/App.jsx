@@ -38,8 +38,7 @@ export default function App() {
         <ThirdHomework />
       </div> */}
       <div className="moduleBlock">
-        {/* <FourthModule /> */}
-        <AppWithHTTPS />
+        <FourthModule />
       </div>
 
       <ScrollToTopButton />
