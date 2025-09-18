@@ -6,11 +6,13 @@ const SecondModuleModal = ({ closeModal }) => {
     return parseInt(localStorage.getItem("modal-counter") ?? 0);
   });
   const buttonRef = useRef();
+  const buttonRefSecond = useRef();
   // console.log(buttonRef);
   const handleRefBtn = () => {
-    console.log(buttonRef.current);
-    console.log(getComputedStyle(buttonRef.current).width);
-    console.log(buttonRef.current.getBoundingClientRect());
+    // console.log(buttonRef.current);
+    // console.log(getComputedStyle(buttonRef.current).width);
+    // console.log(buttonRef.current.getBoundingClientRect());
+    buttonRefSecond.current.focus();
   };
   // useEffect(() = {
   //     console.log(`${counter}`);
@@ -70,6 +72,7 @@ const SecondModuleModal = ({ closeModal }) => {
         </button>
         {/* <button type="button" onClick={() => setCounter(counter + 1)}> */}
         <button
+          ref={buttonRefSecond}
           type="button"
           onClick={() => setCounter((prevState) => prevState + 1)}
         >

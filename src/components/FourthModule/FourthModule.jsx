@@ -2,6 +2,7 @@ import Prism from "prismjs";
 import "prismjs/themes/prism.css";
 import "prismjs/components/prism-jsx";
 import AppContext from "./AppContext";
+import AppWithHTTPS from "./AppWithHTTPS";
 import css from "./FourthModule.module.css";
 import FMModal from "./FMModal/FMModal";
 
@@ -447,6 +448,84 @@ export default UserMenu;
       </pre>
       <h4>Приклад з модальним вікном</h4>
       <FMModal />
+      <h4>Приклад роботи з мережевими запитами</h4>
+      <p>У цьому прикладі ми будемо використовувати DummyJSON</p>
+      <pre>
+        <code className="language-jsx">{`npm install axios`}</code>
+      </pre>
+      <p>
+        <b>Усі мережеві запити необхідно надсилати в App</b>
+      </p>
+      <pre>
+        <code className="language-jsx">{` axios
+    .get("https://dummyjson.com/posts")
+    .then((res) => res.json())
+    .then(console.log);`}</code>
+      </pre>
+      <p>Для виведення результату мережевих запитів використовуємо юзефект</p>
+      <pre>
+        <code className="language-jsx">{`useEffect(() => {}, []);
+  axios
+    .get("https://dummyjson.com/posts")
+    .then(({ data }) => console.log(data));`}</code>
+      </pre>
+      <p>
+        Наступним кроком необхідно створити стан та записати до нього результат
+        мережевого запиту
+      </p>
+      <pre>
+        <code className="language-jsx">{`const [posts, setPosts] = useState(null); `}</code>
+      </pre>
+      <pre>
+        <code className="language-jsx">{`useEffect(() => {
+            axios.get("https://dummyjson.com/posts").then(({ data }) => {
+              setPosts(data.posts);
+            });
+          }, []);`}</code>
+      </pre>
+      <p>Залишилося вивести розмітку</p>
+      <pre>
+        <code className="language-jsx">{`{posts.map((post) => {
+        return (
+          <article key={post.id}>
+            <h5>{post.title}</h5>
+          </article>
+        );
+      })}`}</code>
+      </pre>
+      <p>Console:</p>
+      <pre>
+        <code className="language-jsx">{`Uncaught TypeError: can't access property "map", posts is null
+    AppWithHTTPS AppWithHTTPS.jsx:33
+    React 13
+    performReactRefresh @react-refresh:208
+    performReactRefresh`}</code>
+      </pre>
+      <p>
+        Саме тому необхідно виконувати перевірку перед виводом масиву, адже його
+        початковий стан - null
+      </p>
+      <pre>
+        <code className="language-jsx">{`const [posts, setPosts] = useState([]);`}</code>
+      </pre>
+      <pre>
+        <code className="language-jsx">{`{Array.isArray(posts) && posts.length === 0 && <p>За вашим запитом нічого не знайдено</p>}`}</code>
+      </pre>
+      <p>
+        Наведений метод виклику функції є досить застарілим, тому оновимо вигляд
+        функції
+      </p>
+      <pre>
+        <code className="language-jsx">{`useEffect(() => {
+    const fetchPosts = async () => {
+      const { data } = await axios.get("https://dummyjson.com/posts");
+      setPosts(data.posts);
+    };
+    fetchPosts();
+  }, []);`}</code>
+      </pre>
+      <AppWithHTTPS />
+
       <pre>
         <code className="language-jsx">{``}</code>
       </pre>

@@ -16,6 +16,7 @@ import SecondModule from "./SecondModule/SecondModule";
 import ThirdModule from "./ThirdModule/ThirdModule";
 import ThirdHomework from "./HWT/ThirdHomework/ThirdHomework";
 import FourthModule from "./FourthModule/FourthModule";
+import AppWithHTTPS from "./FourthModule/AppWithHTTPS";
 export default function App() {
   useEffect(() => {
     Prism.highlightAll(); // пробегается по всему DOM и подсвечивает <pre><code>
@@ -37,7 +38,8 @@ export default function App() {
         <ThirdHomework />
       </div> */}
       <div className="moduleBlock">
-        <FourthModule />
+        {/* <FourthModule /> */}
+        <AppWithHTTPS />
       </div>
 
       <ScrollToTopButton />
