@@ -5,8 +5,12 @@ import AppContext from "../components/FourthModule/AppContext";
 import AppWithHTTPS from "../components/FourthModule/AppWithHTTPS";
 import css from "../components/FourthModule/FourthModule.module.css";
 import FMModal from "../components/FourthModule/FMModal/FMModal";
+import { useEffect } from "react";
 
 const FourthModule = () => {
+  useEffect(() => {
+    Prism.highlightAll();
+  }, []);
   return (
     <div>
       <h1>Модуль 4</h1>

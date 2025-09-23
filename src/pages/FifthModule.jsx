@@ -1,6 +1,11 @@
-import React from "react";
-
+import React, { useEffect } from "react";
+import Prism from "prismjs";
+import "prismjs/themes/prism.css";
+import "prismjs/components/prism-jsx";
 const FifthModule = () => {
+  useEffect(() => {
+    Prism.highlightAll();
+  }, []);
   return (
     <div>
       <h1>Модуль 5</h1>

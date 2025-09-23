@@ -3,7 +3,11 @@ import css from "../components/AppProfile/AppProfile.module.css";
 import Prism from "prismjs";
 import "prismjs/themes/prism.css";
 import "prismjs/components/prism-jsx";
+import { useEffect } from "react";
 export default function MNOne({ onDeleteProfile }) {
+  useEffect(() => {
+    Prism.highlightAll();
+  }, []);
   const users = [
     {
       id: 1,

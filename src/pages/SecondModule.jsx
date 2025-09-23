@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Bar from "../components/Bar/Bar";
 import SecondModuleModal from "../components/SecondModuleModal/SecondModuleModal";
 import SipHappensCafe from "../components/HWS/SipHappensCafe/SipHappensCafe";
@@ -9,6 +9,9 @@ import Prism from "prismjs";
 import "prismjs/themes/prism.css";
 import "prismjs/components/prism-jsx";
 export default function SecondModule() {
+  useEffect(() => {
+    Prism.highlightAll();
+  }, []);
   const [counter, setCounter] = useState(0);
   const [isLoremOpen, setIsLoremOpen] = useState(false);
   const [bar, setBar] = useState({
