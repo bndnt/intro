@@ -1,6 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { StrictMode } from "react";
+import { BrowserRouter } from "react-router-dom";
 import { createRoot } from "react-dom/client";
 // Імпорт стилів нормалізації
 import "modern-normalize";
@@ -18,7 +19,9 @@ import { UserContextProvider } from "./components/context/UserContext";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
-    <App />
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
   </StrictMode>
   // <UserContextProvider>
   //   <AppContext />

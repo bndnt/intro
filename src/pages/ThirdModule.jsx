@@ -1,8 +1,8 @@
-import css from "./ThirdModule.module.css";
-import TMUsers from "../ThirdModuleComponents/TMUsers/TMUsers";
-import FormikComponent from "../ThirdModuleComponents/FormikComponent/FormikComponent";
-import screenForm1 from "../../assets/img/screenForm1.png";
-import screenFilter from "../../assets/img/filterEx.png";
+import css from "../components/ThirdModule/ThirdModule.module.css";
+import TMUsers from "../components/ThirdModuleComponents/TMUsers/TMUsers";
+import FormikComponent from "../components/ThirdModuleComponents/FormikComponent/FormikComponent";
+import screenForm1 from "../assets/img/screenForm1.png";
+import screenFilter from "../assets/img/filterEx.png";
 import Prism from "prismjs";
 import "prismjs/themes/prism.css";
 import "prismjs/components/prism-jsx";

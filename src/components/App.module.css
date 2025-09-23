@@ -1,0 +1,14 @@
+.navigation {
+  display: flex;
+  gap: 15;
+}
+.link {
+  padding: 10px 15px;
+  color: inherit;
+  transition: all 0.3s ease-in-out;
+}
+
+.linkActive {
+  background-color: black;
+  color: white;
+}

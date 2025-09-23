@@ -1,10 +1,10 @@
 import Prism from "prismjs";
 import "prismjs/themes/prism.css";
 import "prismjs/components/prism-jsx";
-import AppContext from "./AppContext";
-import AppWithHTTPS from "./AppWithHTTPS";
-import css from "./FourthModule.module.css";
-import FMModal from "./FMModal/FMModal";
+import AppContext from "../components/FourthModule/AppContext";
+import AppWithHTTPS from "../components/FourthModule/AppWithHTTPS";
+import css from "../components/FourthModule/FourthModule.module.css";
+import FMModal from "../components/FourthModule/FMModal/FMModal";
 
 const FourthModule = () => {
   return (

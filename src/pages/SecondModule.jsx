@@ -1,10 +1,10 @@
 import { useState } from "react";
-import Bar from "../Bar/Bar";
-import SecondModuleModal from "../SecondModuleModal/SecondModuleModal";
-import SipHappensCafe from "../HWS/SipHappensCafe/SipHappensCafe";
-import screen1 from "../../assets/img/screen1.jpg";
-import screen2 from "../../assets/img/screen2.png";
-import css from "./SecondModule.module.css";
+import Bar from "../components/Bar/Bar";
+import SecondModuleModal from "../components/SecondModuleModal/SecondModuleModal";
+import SipHappensCafe from "../components/HWS/SipHappensCafe/SipHappensCafe";
+import screen1 from "../assets/img/screen1.jpg";
+import screen2 from "../assets/img/screen2.png";
+import css from "../components/SecondModule/SecondModule.module.css";
 import Prism from "prismjs";
 import "prismjs/themes/prism.css";
 import "prismjs/components/prism-jsx";
