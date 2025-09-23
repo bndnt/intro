@@ -620,9 +620,6 @@ export default UserMenu;
       </pre>
       <h3>Результат виконання коду</h3>
       <AppWithHTTPS />
-      <pre>
-        <code className="language-jsx">{``}</code>
-      </pre>
     </div>
   );
 };

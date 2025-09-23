@@ -17,13 +17,14 @@ import ThirdModule from "./ThirdModule/ThirdModule";
 import ThirdHomework from "./HWT/ThirdHomework/ThirdHomework";
 import FourthModule from "./FourthModule/FourthModule";
 import AppWithHTTPS from "./FourthModule/AppWithHTTPS";
+import FifthModule from "./FifthModule/FifthModule";
 export default function App() {
   useEffect(() => {
     Prism.highlightAll(); // пробегается по всему DOM и подсвечивает <pre><code>
   }, []);
   return (
     <div className="page">
-      <h1>Посібник-шпора по лекціям GoIt з React </h1>
+      {/* <h1>Посібник-шпора по лекціям GoIt з React </h1>
       <div className="moduleBlock">
         <AppProfile />
         <HomeworkProfile />
@@ -39,6 +40,9 @@ export default function App() {
       </div>
       <div className="moduleBlock">
         <FourthModule />
+      </div> */}
+      <div className="moduleBlock">
+        <FifthModule />
       </div>
 
       <ScrollToTopButton />
