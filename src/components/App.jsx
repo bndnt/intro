@@ -23,8 +23,11 @@ import SecondModule from "../pages/SecondModule";
 
 import ThirdModule from "../pages/ThirdModule";
 import FourthModule from "../pages/FourthModule";
+import FMPosts from "../pages/FMPosts";
+import PostDetailsPage from "../pages/PostDetailsPage";
 
 import "./App.css";
+import PostComments from "./PostComments/PostComments";
 export default function App() {
   useEffect(() => {
     Prism.highlightAll(); // пробегается по всему DOM и подсвечивает <pre><code>
@@ -81,6 +84,14 @@ export default function App() {
           >
             M5
           </NavLink>
+          <NavLink
+            className={({ isActive }) =>
+              clsx(css.link, isActive && css.linkActive)
+            }
+            to="/m5-posts"
+          >
+            M5 Posts
+          </NavLink>
         </nav>
       </header>
       <main>
@@ -91,6 +102,10 @@ export default function App() {
           <Route path="/m3" element={<ThirdModule />} />
           <Route path="/m4" element={<FourthModule />} />
           <Route path="/m5" element={<FifthModule />} />
+          <Route path="/m5-posts" element={<FMPosts />} />
+          <Route path="/posts/:postId" element={<PostDetailsPage />}>
+            <Route path="comments" element={<PostComments />} />
+          </Route>
         </Routes>
       </main>
       {/* 

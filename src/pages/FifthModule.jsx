@@ -9,7 +9,7 @@ const FifthModule = () => {
   return (
     <div>
       <h1>Модуль 5</h1>
-      <h2>HTTP-запити</h2>
+      <h2>Router</h2>
       <pre>
         <code className="language-jsx">{`npm install react-router-dom`}</code>
       </pre>
@@ -432,7 +432,155 @@ export const About = () => {
       </div>
 
       <div className="topicBlock">
-        <h3></h3>
+        <h3>Заняття 2 - Програмна навігація</h3>
+        <h4>Імперативний підхід – useNavigate</h4>
+        <p>
+          Хук useNavigate() повертає функцію navigate(), яка виконує перехід на
+          вказаний маршрут.
+        </p>
+        <h4>Автоматичний редірект через певний час</h4>
+        <p>
+          Наприклад, після 3 секунд очікування на сторінці 404 користувача
+          поверне на головну.
+        </p>
+        <pre>
+          <code className="language-jsx">{`import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+
+export const NotFound = () => {
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      navigate("/", { replace: true });
+    }, 3000);
+
+    return () => clearTimeout(timer);
+  }, [navigate]);
+
+  return <h1>Сторінку не знайдено. Повертаємо на головну...</h1>;
+};
+`}</code>
+        </pre>
+        <p>
+          <code>replace: true</code> перезаписує поточну URL-сторінку в історії
+          браузера, щоб користувач не міг повернутися назад.
+        </p>
+        <h4>Редірект після натискання на кнопку</h4>
+        <pre>
+          <code className="language-jsx">{`import { useNavigate } from "react-router-dom";
+
+export const HomePage = () => {
+  const navigate = useNavigate();
+
+  return (
+    <div>
+      <h1>Вітаємо на головній сторінці</h1>
+      <button onClick={() => navigate("/about")}>Перейти на сторінку "Про нас"</button>
+    </div>
+  );
+};`}</code>
+        </pre>
+        <h4>Декларативний підхід – Navigate</h4>
+        <p>
+          Другий спосіб це компонент Navigate - обгортка над хуком useNavigate.
+          Він виконує навігацію у момент рендеру. Шлях для навігації та
+          необов'язкові параметри передаються окремими пропсами.
+        </p>
+        <h4>Редірект при відсутності доступу</h4>
+        <p>
+          Наприклад, якщо користувач заходить на /dashboard, але не має доступу,
+          ми перенаправимо його на /login.
+        </p>
+        <pre>
+          <code className="language-jsx">{`import { use } from "react";
+import { Navigate } from "react-router-dom";
+import { useUser } from "../context/UserContext"; // Використовуємо контекст
+
+export const Dashboard = () => {
+  const { isLoggedIn } = useUser();
+
+  if (!isLoggedIn) {
+    return <Navigate to="/login" replace />;
+  }
+
+  return <h1>Ласкаво просимо в особистий кабінет</h1>;
+};`}</code>
+        </pre>
+        <h5>useNavigate() чи {`<Navigate>`}?</h5>
+        <ul>
+          <li>
+            <code>{`useNavigate()`}</code>– для редіректу після дії (натискання
+            кнопки, відправки форми, запиту).
+          </li>
+          <li>
+            <code>{`<Navigate>`}</code> – для редіректу під час рендеру (захист
+            сторінок, автоматичний перехід).
+          </li>
+        </ul>
+        <p>Те саме з useEffect() + useNavigate()</p>
+        <pre>
+          <code className="language-jsx">{`import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import { useUser } from "../context/UserContext";
+
+export const Dashboard = () => {
+  const { isLoggedIn } = useUser();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (!isLoggedIn) {
+      navigate("/login", { replace: true });
+    }
+  }, [isLoggedIn, navigate]);
+
+  return <h1>Ласкаво просимо в особистий кабінет</h1>;
+};
+`}</code>
+        </pre>
+        <h4>Рядок запиту</h4>
+        <pre>
+          <code className="language-jsx">{`const [searchParams, setSearchParams] = useSearchParams();`}</code>
+        </pre>
+        <p>Створимо змінну</p>{" "}
+        <pre>
+          <code className="language-jsx">{`  const query = searchParams.get("query");
+`}</code>
+        </pre>
+        <p>Змінемо функцію пошуку </p>
+        <pre>
+          <code className="language-jsx">{` const onSearch = (searchTerm) => {
+    // setSearchValue(searchTerm);
+    setSearchParams({ query: searchTerm });
+  };`}</code>
+        </pre>
+        <p>
+          Змінемо пошукове значення у юзефекті - при наявності пошукового слова
+          - виводимо лише статті, що відповідають пошуковому запиту. В іншому ж
+          випадку будемо виводити усі статті
+        </p>
+        <pre>
+          <code className="language-jsx">{`  useEffect(() => {
+              
+              const fetchPostsBySearchValue = async () => {
+                try {
+                  setLoading(true);
+                  if (query) {
+                    const data = await RequestPostsBySearchValue(query);
+                    setPosts(data.posts);
+                  } else {
+                    const data = await RequestAllPosts();
+                    setPosts(data.posts);
+                  }
+                } catch (err) {
+                  setError(err.message);
+                } finally {
+                  setLoading(false);
+                }
+              };
+              fetchPostsBySearchValue();
+            }, [query]);`}</code>
+        </pre>
       </div>
 
       <pre>

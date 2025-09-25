@@ -19,9 +19,11 @@ import { UserContextProvider } from "./components/context/UserContext";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
-    <BrowserRouter>
-      <App />
-    </BrowserRouter>
+    <UserContextProvider>
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
+    </UserContextProvider>
   </StrictMode>
   // <UserContextProvider>
   //   <AppContext />

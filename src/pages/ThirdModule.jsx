@@ -3,6 +3,7 @@ import TMUsers from "../components/ThirdModuleComponents/TMUsers/TMUsers";
 import FormikComponent from "../components/ThirdModuleComponents/FormikComponent/FormikComponent";
 import screenForm1 from "../assets/img/screenForm1.png";
 import screenFilter from "../assets/img/filterEx.png";
+import ThirdHomework from "../components/HWT/ThirdHomework/ThirdHomework";
 import Prism from "prismjs";
 import "prismjs/themes/prism.css";
 import "prismjs/components/prism-jsx";
@@ -715,6 +716,7 @@ const FeedbackForm = () => {
       <h3 id="formik">Приклад використання Formik</h3>
       <FormikComponent />
       <h3>Домашнє завдання 3 - Книга контактів</h3>
+      <ThirdHomework />
     </div>
     //  <pre>
     //     <code className="language-jsx">{``}</code>
