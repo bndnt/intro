@@ -582,6 +582,97 @@ export const Dashboard = () => {
             }, [query]);`}</code>
         </pre>
       </div>
+      <div className="topicBlock">
+        <h3>Об'єкт місцезнаходження</h3>
+        <p>
+          Кожен запис у стеку історії навігації описаний об'єктом розташування
+          (location) зі стандартним набором властивостей, які зберігають повну
+          інформацію про URL. Коли користувач натискає на посилання та
+          переміщається за програмою, поточне місце розташування змінюється і
+          додається новий запис історії.
+        </p>
+        <p>
+          Наприклад, для такого URL об'єкт розташування буде виглядати наступним
+          чином.
+        </p>
+        <pre>
+          <code className="language-jsx">{`// https://gomerch.it/products?name=hoodie&color=orange&maxPrice=500#agreement
+{
+  "pathname": "/products",
+  "search": "?name=hoodie&color=orange&maxPrice=500",
+  "hash": "#agreement",
+  "state": null,
+  "key": "random-browser-generated-id"
+}
+`}</code>
+        </pre>
+        <h3>Хук useLocation</h3>
+        <p>
+          Повертає об'єкт розташування, що представляє поточний URL, щоразу коли
+          ми переходимо новим маршрутом або оновлюємо частину поточного URL.
+          Одним із застосувань може бути завдання, де необхідно виконати якийсь
+          ефект при зміні поточного розташування. Наприклад, надіслати дані на
+          сервіс аналітики.
+        </p>
+        <pre>
+          <code className="language-jsx">{`import { useEffect } from "react";
+import { useLocation } from "react-router-dom";
+import Analytics from "path/to/analytics-service";
+
+const App = () => {
+  const location = useLocation();
+
+  useEffect(() => {
+    Analytics.send(location);
+  }, [location]);
+
+  return <div>...</div>;
+};`}</code>
+        </pre>
+        <h4>Приклад створення кнопки назад</h4>
+        <ol>
+          <li>
+            <span>
+              Створимо стейт у посиланні на пост на сторінці з усіма постами
+            </span>
+            <pre>
+              <code className="language-jsx">{`const location = useLocation();
+`}</code>
+            </pre>
+            <pre>
+              <code className="language-jsx">{`<Link state={{ from: location }}
+to={\`/posts/\${post.id}\`}
+key={post.id}>
+<h5>{post.title}</h5>
+<p>{post.body}</p>
+<p>{JSON.stringify(post.reactions)}</p>
+<p>Tags: {post.tags.join(", ")}</p>
+</Link>`}</code>
+            </pre>
+          </li>
+          <li>
+            На сторінці Product Details створимо також змінну location.
+            Припереході зі сторінкі з усіма статтями ми потрапляємо на сторінку
+            деталів статті, в неї в локації вже буде збережено стан from -
+            звідки ми потрапили сюда.
+          </li>
+          <li>
+            Наступним кроком збережемо стан, щоб не згубити у нереактивну (не
+            буде провокувати ререндеринг додатку) змінну
+            <pre>
+              <code className="language-jsx">{`const backLinkRef = useRef(location.state?.from ?? "/posts");`}</code>
+            </pre>
+          </li>
+          <li>
+            На цій же сторінці дітейлс додаємо посилання назад
+            <pre>
+              <code className="language-jsx">{`<Link to={backLinkRef.current}>Go back</Link>`}</code>
+            </pre>
+          </li>
+        </ol>
+      </div>
+
+      <div className="topicBlock"></div>
 
       <pre>
         <code className="language-jsx">{``}</code>

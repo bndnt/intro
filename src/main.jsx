@@ -18,13 +18,13 @@ import { UserContextProvider } from "./components/context/UserContext";
 // щоб відрендерити найвищий компонент в ієрархії (App), що призведе до рендеру всіх інших компонентів додатка.
 
 createRoot(document.getElementById("root")).render(
-  <StrictMode>
-    <UserContextProvider>
-      <BrowserRouter>
-        <App />
-      </BrowserRouter>
-    </UserContextProvider>
-  </StrictMode>
+  // <StrictMode>
+  <UserContextProvider>
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
+  </UserContextProvider>
+  // </StrictMode>
   // <UserContextProvider>
   //   <AppContext />
   // </UserContextProvider>

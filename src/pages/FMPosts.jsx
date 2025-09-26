@@ -2,12 +2,15 @@ import React, { useEffect, useState } from "react";
 import Loader from "../components/Loader/Loader";
 import { RequestAllPosts, RequestPostsBySearchValue } from "../services/api";
 import SearchPost from "../components/FourthModule/SearchPost/SearchPost";
-import { Link, useSearchParams } from "react-router-dom";
+import { Link, useLocation, useSearchParams } from "react-router-dom";
 const FMPosts = () => {
   const [posts, setPosts] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [searchParams, setSearchParams] = useSearchParams();
+  const location = useLocation();
+  // console.log(location);
+
   const query = searchParams.get("query");
 
   useEffect(() => {
@@ -48,7 +51,11 @@ const FMPosts = () => {
       {Array.isArray(posts) &&
         posts.map((post) => {
           return (
-            <Link to={`/posts/${post.id}`} key={post.id}>
+            <Link
+              state={{ from: location }}
+              to={`/posts/${post.id}`}
+              key={post.id}
+            >
               <h5>{post.title}</h5>
               <p>{post.body}</p>
               <p>{JSON.stringify(post.reactions)}</p>
