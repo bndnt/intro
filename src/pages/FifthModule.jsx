@@ -670,6 +670,25 @@ key={post.id}>
             </pre>
           </li>
         </ol>
+        <h3>Розділення коду</h3>
+        <h4>Динамічні імпорти</h4>
+        <ol>
+          <li>В компоненті App замінемо імпорти на динамічні.</li>
+          <p>Замість</p>
+          <pre>
+            <code className="language-jsx">{`import MNOne from "../pages/MNOne";`}</code>
+          </pre>
+          <p>Завантажемо сторінку у динамічному форматі</p>
+          <pre>
+            <code className="language-jsx">{`const MNOne = lazy(() => import("../pages/MNOne"));`}</code>
+          </pre>
+          <li>
+            Наступним кроком треба змусити Routes почекати, перед тим, як
+            показувати компоненти. Адже поки що вони завантажуються моментально.
+            Щоб уникнути, що додаток крашиться при наявності помилки у хочаб
+            одному компоненті.
+          </li>
+        </ol>
       </div>
 
       <div className="topicBlock"></div>

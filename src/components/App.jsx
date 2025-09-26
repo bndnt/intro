@@ -1,6 +1,9 @@
-import { useEffect } from "react";
+import { lazy, useEffect } from "react";
 // import reactLogo from "../assets/react.svg";
 // import viteLogo from "/vite.svg";
+import "./App.css";
+
+import { NavLink, Route, Routes } from "react-router-dom";
 import Prism from "prismjs";
 import { clsx } from "clsx";
 import css from "./App.module.css";
@@ -9,25 +12,24 @@ import "prismjs/themes/prism.css";
 import "prismjs/components/prism-jsx";
 import "prismjs/components/prism-json";
 import HomeworkProfile from "./HWF/HomeworkProfile/HomeworkProfile";
-import ScrollToTopButton from "./ScrollToTopButton/ScrollToTopButton";
 
 import HomeworkFriends from "./HWF/HomeworkFriends/HomeworkFriends";
 import HomeworkTransaction from "./HWF/HomeworkTransaction/HomeworkTransaction";
 import ThirdHomework from "./HWT/ThirdHomework/ThirdHomework";
 import AppWithHTTPS from "./FourthModule/AppWithHTTPS";
-import FifthModule from "../pages/FifthModule";
-import { NavLink, Route, Routes } from "react-router-dom";
-import HomePage from "../pages/HomePage";
-import MNOne from "../pages/MNOne";
-import SecondModule from "../pages/SecondModule";
-
-import ThirdModule from "../pages/ThirdModule";
-import FourthModule from "../pages/FourthModule";
-import FMPosts from "../pages/FMPosts";
-import PostDetailsPage from "../pages/PostDetailsPage";
-
-import "./App.css";
-import PostComments from "./PostComments/PostComments";
+// import MNOne from "../pages/MNOne";
+const ScrollToTopButton = lazy(
+  () => import("./ScrollToTopButton/ScrollToTopButton")
+);
+const HomePage = lazy(() => import("../pages/HomePage"));
+const MNOne = lazy(() => import("../pages/MNOne"));
+const SecondModule = lazy(() => import("../pages/SecondModule"));
+const ThirdModule = lazy(() => import("../pages/ThirdModule"));
+const FourthModule = lazy(() => import("../pages/FourthModule"));
+const FifthModule = lazy(() => import("../pages/FifthModule"));
+const FMPosts = lazy(() => import("../pages/FMPosts"));
+const PostDetailsPage = lazy(() => import("../pages/PostDetailsPage"));
+const PostComments = lazy(() => import("./PostComments/PostComments"));
 export default function App() {
   useEffect(() => {
     Prism.highlightAll(); // пробегается по всему DOM и подсвечивает <pre><code>
