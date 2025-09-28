@@ -1,6 +1,5 @@
-import { lazy, useEffect } from "react";
-// import reactLogo from "../assets/react.svg";
-// import viteLogo from "/vite.svg";
+import { lazy, Suspense, useEffect } from "react";
+
 import "./App.css";
 
 import { NavLink, Route, Routes } from "react-router-dom";
@@ -17,6 +16,7 @@ import HomeworkFriends from "./HWF/HomeworkFriends/HomeworkFriends";
 import HomeworkTransaction from "./HWF/HomeworkTransaction/HomeworkTransaction";
 import ThirdHomework from "./HWT/ThirdHomework/ThirdHomework";
 import AppWithHTTPS from "./FourthModule/AppWithHTTPS";
+import Loader from "./Loader/Loader";
 // import MNOne from "../pages/MNOne";
 const ScrollToTopButton = lazy(
   () => import("./ScrollToTopButton/ScrollToTopButton")
@@ -97,18 +97,20 @@ export default function App() {
         </nav>
       </header>
       <main>
-        <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/m1" element={<MNOne />} />
-          <Route path="/m2" element={<SecondModule />} />
-          <Route path="/m3" element={<ThirdModule />} />
-          <Route path="/m4" element={<FourthModule />} />
-          <Route path="/m5" element={<FifthModule />} />
-          <Route path="/m5-posts" element={<FMPosts />} />
-          <Route path="/posts/:postId" element={<PostDetailsPage />}>
-            <Route path="comments" element={<PostComments />} />
-          </Route>
-        </Routes>
+        <Suspense fallback={<Loader />}>
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/m1" element={<MNOne />} />
+            <Route path="/m2" element={<SecondModule />} />
+            <Route path="/m3" element={<ThirdModule />} />
+            <Route path="/m4" element={<FourthModule />} />
+            <Route path="/m5" element={<FifthModule />} />
+            <Route path="/m5-posts" element={<FMPosts />} />
+            <Route path="/posts/:postId" element={<PostDetailsPage />}>
+              <Route path="comments" element={<PostComments />} />
+            </Route>
+          </Routes>
+        </Suspense>
       </main>
       {/* 
       <div className="moduleBlock">
