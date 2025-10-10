@@ -53,24 +53,13 @@ li code {
 .topicBlock {
   padding: 15px 0;
 }
+.topicBlock img {
+  width: 100%;
+  max-width: 40%;
+  min-width: 290px;
+}
 .inlineSpan {
   color: brown;
-}
-@media (max-width: 650px) {
-  .usersFlex {
-    display: flex;
-    justify-content: start;
-    flex-wrap: wrap;
-    margin-top: 30px;
-  }
-}
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -86,11 +75,18 @@ li code {
 .read-the-docs {
   color: #888;
 }
+
 @media (max-width: 650px) {
   h1 {
     font-size: 2.2em;
   }
   code {
     font-size: 0.8em;
+  }
+  .usersFlex {
+    display: flex;
+    justify-content: start;
+    flex-wrap: wrap;
+    margin-top: 30px;
   }
 }

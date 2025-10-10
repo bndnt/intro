@@ -534,7 +534,7 @@ export default {
         </li>
         <li>
           <code>{`e.currentTarget`}</code> - елемент, на якому висить слухач
-          події{" "}
+          події
           <code className="language-jsx">{`<div className={css.backdrop} onClick={handleBackdropClose}></div>`}</code>
         </li>
       </ul>

@@ -697,12 +697,6 @@ key={post.id}>
           <code className="language-jsx">{`<Suspense fallback={<Loader />}>`}</code>
         </pre>
       </div>
-
-      <div className="topicBlock"></div>
-
-      <pre>
-        <code className="language-jsx">{``}</code>
-      </pre>
     </div>
   );
 };

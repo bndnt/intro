@@ -718,9 +718,6 @@ const FeedbackForm = () => {
       <h3>Домашнє завдання 3 - Книга контактів</h3>
       <ThirdHomework />
     </div>
-    //  <pre>
-    //     <code className="language-jsx">{``}</code>
-    //   </pre>
   );
 };
 
