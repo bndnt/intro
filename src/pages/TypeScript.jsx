@@ -414,9 +414,9 @@ console.log(names); // ['Alice', 'Bob', 'Charlie']
         <pre>
           <code className="language-jsx">{`function greet(name: string, age?: number) {
   if (age !== undefined) {
-    console.log(\`Hello, my name is ${name} and I am ${age} years old.\`);
+    console.log(\`Hello, my name is \${name} and I am \${age} years old.\`);
   } else {
-    console.log(\`Hello, my name is ${name}.\`);
+    console.log(\`Hello, my name is \${name}.\`);
   }
 }
 
